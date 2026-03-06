@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection — MICCAI 2026 accepted paper.">
+  <meta name="keywords" content="landmark detection, diffusion models, few-shot learning, anatomical landmarks, medical imaging, CDPM, uncertainty quantification">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CDPM-Align — Multi-Scale Guidance-Aligned Diffusion Pretraining</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title" style="font-size: 36px;">
+              CDPM-Align:<br>
+              Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ" target="_blank">Roberto Di Via</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=it&user=W6Jwb1UAAAAJ" target="_blank">Irina Voiculescu</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=riK7DscAAAAJ&hl=it" target="_blank">Francesca Odone</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=-boYCXcAAAAJ&hl=it" target="_blank">Vito Paolo Pastore</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <sup>1</sup>MaLGa-DIBRIS, University of Genoa, Italy &nbsp;&nbsp;
+                <sup>2</sup>Oxford University Department of Computer Science, UK
+              </span>
+            </div>
+
+            <div class="column has-text-centered" style="margin-top:1rem;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Paper link coming soon');return false;">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper (arXiv)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="static/pdfs/" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Poster coming soon');return false;">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Poster (PDF)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/Malga-Vision/CDPM-Align" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Accepted at: MICCAI 2026');return false;">
+                    <span class="icon"><i class="fas fa-calendar-check"></i></span>
+                    <span>MICCAI 2026 — Accepted</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-centered">
+          <div class="column">
+            <img src="static/images/pipeline.png" alt="Teaser: CDPM-Align pipeline overview" style="width:100%">
+            <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.9rem; color:#666;">
+              <b>Figure 1:</b> Overview of CDPM-Align. Left: Two-phase multi-dataset pretraining with standard conditional diffusion training followed by alignment phase enforcing directional consistency of the guidance signal. Right: End-to-end few-shot fine-tuning via pixel-wise classification.
+            </p>
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
+          We introduce <b>CDPM-align</b>, a conditional diffusion pretraining framework with multi-scale guidance alignment. Pretrained on only <b>988 images</b>, it achieves state-of-the-art few-shot landmark detection with <b>sub-millimetre ERE</b> and outperforms self-supervised methods in robustness.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction.
+            </p>
+            <p>
+              In this work, we introduce CDPM-align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on few-shot regimes (10 and 25 annotated images). Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training.
+            </p>
+            <p>
+              Our results confirm that generative pre-training enables the model to learn robust representations. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Contributions -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Key Contributions</h2>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #3273dc;">
+              <ol style="text-align:left; margin-left:1rem; line-height:1.8;">
+                <li><b>Conditional generative pretraining strategy</b>: We introduce a conditional generative pretraining strategy for small-scale heterogeneous X-ray datasets, augmented with a multi-scale guidance alignment loss that improves localisation accuracy, uncertainty concentration, and robustness in low-shot regimes.</li>
+                <li><b>Comprehensive validation</b>: We validate the proposed method across three clinical dimensions (accuracy, predictive uncertainty, and robustness) on three public benchmarks under 10- and 25-shot protocols, showing consistent improvements over supervised, SSL, and state-of-the-art baselines.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Method</h2>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Conditional Diffusion Probabilistic Model (CDPM)</h3>
+            <p>
+              We build on denoising diffusion probabilistic models (DDPMs) with class-conditional generation via classifier-free guidance. The forward process produces noisy samples, and a noise-prediction network is trained with class labels (dataset indices). The backbone is a UNet with FiLM embeddings for timestep and class conditioning.
+            </p>
+
+            <h3 class="title is-4" style="margin-top:1.5rem;">CDPM-Align: Multi-scale Alignment on the Guidance Signal</h3>
+            <p>
+              We introduce a multi-scale alignment objective that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. For each image, we sample two timesteps and perform forward passes with conditional and unconditional labels.
+            </p>
+            <p>
+              The guidance difference Δh = h_cond - h_uncond encodes dataset-specific anatomy. We extract features at four hierarchy levels: encoder 1/4, encoder 1/8, bottleneck, and decoder 1/8. The alignment loss averages the per-level cosine dissimilarity between the two views.
+            </p>
+            <p>
+              The alignment phase is applied only in the final 10% of training iterations, reducing computational overhead from 4× to 1.3×.
+            </p>
+
+            <h3 class="title is-4" style="margin-top:1.5rem;">Downstream Landmark Detection</h3>
+            <p>
+              Following pretraining, the full pretrained UNet is fine-tuned end-to-end with a pixel-wise classification head. During fine-tuning and inference, the unconditional class label is used, decoupling the downstream task from pretraining labels and enabling future application to unseen datasets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Experimental Results</h2>
+        </div>
+      </div>
+
+      <!-- Dataset Info -->
+      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <p>
+              We evaluate on three public benchmarks: <b>Shenzhen</b> (279 chest radiographs, 6 landmarks), <b>ISBI2015</b> (400 lateral cephalograms, 19 landmarks), and <b>Digital Hand Atlas (DHA)</b> (910 hand radiographs, 37 landmarks). The pooled unlabeled corpus comprises <b>988 images</b>. Results are reported as mean±std over 5 independent runs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 1: Shenzhen -->
+      <div class="columns is-centered" style="margin-top:2rem;">
+        <div class="column">
+          <h3 class="title is-4 has-text-centered">Table 1: Landmark Detection on Shenzhen</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
+                </tr>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;"></th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">67.82</td>
+                  <td style="padding:8px; border:1px solid #ddd;">132.46</td>
+                  <td style="padding:8px; border:1px solid #ddd;">9.43</td>
+                  <td style="padding:8px; border:1px solid #ddd;">370.73</td>
+                  <td style="padding:8px; border:1px solid #ddd;">37.45</td>
+                  <td style="padding:8px; border:1px solid #ddd;">39.61</td>
+                  <td style="padding:8px; border:1px solid #ddd;">19.59</td>
+                  <td style="padding:8px; border:1px solid #ddd;">266.69</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.44</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
+                  <td style="padding:8px; border:1px solid #ddd;">52.00</td>
+                  <td style="padding:8px; border:1px solid #ddd;">7.92</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.10</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.71</td>
+                  <td style="padding:8px; border:1px solid #ddd;">52.93</td>
+                  <td style="padding:8px; border:1px solid #ddd;">8.12</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.18</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.07</td>
+                  <td style="padding:8px; border:1px solid #ddd;">43.87</td>
+                  <td style="padding:8px; border:1px solid #ddd;">10.23</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.09</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.16</td>
+                  <td style="padding:8px; border:1px solid #ddd;">45.67</td>
+                  <td style="padding:8px; border:1px solid #ddd;">6.91</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (DINO)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.92</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.13</td>
+                  <td style="padding:8px; border:1px solid #ddd;">43.87</td>
+                  <td style="padding:8px; border:1px solid #ddd;">15.15</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.21</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.23</td>
+                  <td style="padding:8px; border:1px solid #ddd;">44.07</td>
+                  <td style="padding:8px; border:1px solid #ddd;">12.25</td>
+                </tr>
+                <tr style="background-color:#e8f4e8;">
+                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>3.01</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.96</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>53.07</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>7.17</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.58</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.58</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>56.00</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>6.51</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 2: ISBI2015 -->
+      <div class="columns is-centered" style="margin-top:2rem;">
+        <div class="column">
+          <h3 class="title is-4 has-text-centered">Table 2: Landmark Detection on ISBI2015</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
+                </tr>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;"></th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">17.20</td>
+                  <td style="padding:8px; border:1px solid #ddd;">48.33</td>
+                  <td style="padding:8px; border:1px solid #ddd;">38.25</td>
+                  <td style="padding:8px; border:1px solid #ddd;">91.94</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.63</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.23</td>
+                  <td style="padding:8px; border:1px solid #ddd;">66.96</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.29</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.70</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.97</td>
+                  <td style="padding:8px; border:1px solid #ddd;">66.57</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.41</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.80</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.26</td>
+                  <td style="padding:8px; border:1px solid #ddd;">74.06</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.34</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.83</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.38</td>
+                  <td style="padding:8px; border:1px solid #ddd;">64.20</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.42</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.86</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.37</td>
+                  <td style="padding:8px; border:1px solid #ddd;">68.83</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.87</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (DINO)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.71</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.96</td>
+                  <td style="padding:8px; border:1px solid #ddd;">54.29</td>
+                  <td style="padding:8px; border:1px solid #ddd;">18.88</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.36</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.94</td>
+                  <td style="padding:8px; border:1px solid #ddd;">66.98</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.09</td>
+                </tr>
+                <tr style="background-color:#e8f4e8;">
+                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.11</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>1.38</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>67.48</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>4.75</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>1.54</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>0.95</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>77.52</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>3.90</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
+            <b>+22% improvement</b> on ISBI2015 10-shot (2.11 vs 2.70 mm). At 25-shot: <b>1.54 mm MRE</b> with <b>77.52% SDR</b>, approaching the 2mm clinical threshold.
+          </p>
+        </div>
+      </div>
+
+      <!-- Table 3: DHA -->
+      <div class="columns is-centered" style="margin-top:2rem;">
+        <div class="column">
+          <h3 class="title is-4 has-text-centered">Table 3: Landmark Detection on DHA</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
+                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
+                </tr>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:8px; border:1px solid #ddd;"></th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">33.85</td>
+                  <td style="padding:8px; border:1px solid #ddd;">90.66</td>
+                  <td style="padding:8px; border:1px solid #ddd;">44.48</td>
+                  <td style="padding:8px; border:1px solid #ddd;">161.83</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.87</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.95</td>
+                  <td style="padding:8px; border:1px solid #ddd;">83.13</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.04</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.34</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
+                  <td style="padding:8px; border:1px solid #ddd;">79.94</td>
+                  <td style="padding:8px; border:1px solid #ddd;">19.11</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.22</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.48</td>
+                  <td style="padding:8px; border:1px solid #ddd;">88.28</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.67</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">6.07</td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.76</td>
+                  <td style="padding:8px; border:1px solid #ddd;">78.44</td>
+                  <td style="padding:8px; border:1px solid #ddd;">26.39</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.95</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.39</td>
+                  <td style="padding:8px; border:1px solid #ddd;">84.07</td>
+                  <td style="padding:8px; border:1px solid #ddd;">7.65</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">ResNet-101 (DINO)</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">23.63</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">22.38</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">34.95</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">99.49</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">10.16</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">10.24</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">63.83</td>
+                  <td style="padding:8px; border:1px solid #ddd; color:red;">46.98</td>
+                </tr>
+                <tr style="background-color:#e8f4e8;">
+                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.51</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.16</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>86.47</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>4.46</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>1.53</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>0.97</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>91.13</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.77</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
+            <b>+42% improvement</b> on DHA 10-shot (2.51 vs 4.34 mm). SSL methods (red) exhibit severe performance degradation on heterogeneous data.
+          </p>
+        </div>
+      </div>
+
+      <!-- ERE Comparison -->
+      <div class="columns is-centered" style="margin-top:2rem;">
+        <div class="column">
+          <h3 class="title is-4 has-text-centered">Uncertainty Visualization</h3>
+          <img src="static/images/ere_comparison.png" alt="ERE comparison across methods" style="width:100%">
+          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
+            <b>Figure 2:</b> Predicted heatmap overlays at 10-shot across datasets (rows) and selected methods (columns). CDPM-align (rightmost) yields consistently lower uncertainty with tight, unimodal heatmaps.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Findings -->
+      <div class="columns is-centered has-text-centered" style="margin-top:2rem;">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Key Findings</h3>
+            <ul style="text-align:left; margin-left:2rem;">
+              <li><b>State-of-the-art few-shot performance</b>: CDPM-align achieves best MRE in 5/6 dataset-budget settings</li>
+              <li><b>Sub-millimetre ERE</b>: At 25-shot, achieves ERE below 1mm on ISBI2015 (0.95mm, +25% improvement) and DHA (0.97mm, +34% improvement)</li>
+              <li><b>Robustness on heterogeneous data</b>: SSL methods exhibit severe performance degradation on DHA at 10-shot (MRE 20-25mm vs 2.51mm for CDPM-align)</li>
+              <li><b>Data-efficient</b>: Pretrained on only 988 images, it matches or surpasses models trained on 112k NIH radiographs</li>
+              <li><b>Key improvements</b>: +22% on ISBI2015 10-shot, +42% on DHA 10-shot</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablation Study -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Ablation Studies</h2>
+        </div>
+      </div>
+
+      <div class="columns is-centered" style="margin-top:1rem;">
+        <div class="column">
+          <h3 class="title is-4 has-text-centered">Table 4: Ablation of Alignment Weight λ on Shenzhen</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:80%; border-collapse: collapse; font-size: 0.8rem; margin: 0 auto;">
+              <thead>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:10px; border:1px solid #ddd;">λ</th>
+                  <th style="padding:10px; border:1px solid #ddd;" colspan="4">10-shot</th>
+                  <th style="padding:10px; border:1px solid #ddd;" colspan="4">25-shot</th>
+                </tr>
+                <tr style="background-color: #f0f0f0;">
+                  <th style="padding:10px; border:1px solid #ddd;"></th>
+                  <th style="padding:10px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:10px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:10px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:10px; border:1px solid #ddd;">P95↓</th>
+                  <th style="padding:10px; border:1px solid #ddd;">MRE↓</th>
+                  <th style="padding:10px; border:1px solid #ddd;">ERE↓</th>
+                  <th style="padding:10px; border:1px solid #ddd;">SDR@2↑</th>
+                  <th style="padding:10px; border:1px solid #ddd;">P95↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:10px; border:1px solid #ddd;">0</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.95</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.35</td>
+                  <td style="padding:10px; border:1px solid #ddd;">51.60</td>
+                  <td style="padding:10px; border:1px solid #ddd;">9.30</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.75</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.69</td>
+                  <td style="padding:10px; border:1px solid #ddd;">53.20</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.20</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px; border:1px solid #ddd;">1</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.82</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.28</td>
+                  <td style="padding:10px; border:1px solid #ddd;">51.53</td>
+                  <td style="padding:10px; border:1px solid #ddd;">9.44</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.61</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.59</td>
+                  <td style="padding:10px; border:1px solid #ddd;">53.47</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.00</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px; border:1px solid #ddd;">3</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.25</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.88</td>
+                  <td style="padding:10px; border:1px solid #ddd;">52.20</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.03</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.89</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.57</td>
+                  <td style="padding:10px; border:1px solid #ddd;">53.47</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.26</td>
+                </tr>
+                <tr style="background-color:#e8f4e8;">
+                  <td style="padding:10px; border:1px solid #ddd;"><b>5</b></td>
+                  <td style="padding:10px; border:1px solid #ddd;"><b>3.01</b></td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.96</td>
+                  <td style="padding:10px; border:1px solid #ddd;"><b>53.07</b></td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.17</td>
+                  <td style="padding:10px; border:1px solid #ddd;"><b>2.58</b></td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.58</td>
+                  <td style="padding:10px; border:1px solid #ddd;"><b>56.00</b></td>
+                  <td style="padding:10px; border:1px solid #ddd;"><b>6.51</b></td>
+                </tr>
+                <tr>
+                  <td style="padding:10px; border:1px solid #ddd;">10</td>
+                  <td style="padding:10px; border:1px solid #ddd;">3.42</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.78</td>
+                  <td style="padding:10px; border:1px solid #ddd;">52.67</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.23</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.74</td>
+                  <td style="padding:10px; border:1px solid #ddd;">2.37</td>
+                  <td style="padding:10px; border:1px solid #ddd;">53.93</td>
+                  <td style="padding:10px; border:1px solid #ddd;">7.23</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
+            λ=5 provides the best balance between accuracy, uncertainty, and robustness. ERE is lowest at λ=10, but this doesn't translate to optimal spatial accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX / Citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Citation</h2>
+      <h3 class="title is-5">BibTeX</h3>
+      <pre><code>@inproceedings{divia2026cdpm,
+  title={CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection},
+  author={Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
+  booktitle={Medical Image Computing and Computer Assisted Intervention (MICCAI)},
+  year={2026}
+}</code></pre>
+      
+      <h3 class="title is-5" style="margin-top:2rem;">APA Citation</h3>
+      <div class="content" style="background-color:#f5f5f5; padding:1rem; border-radius:4px;">
+        <p>
+          Di Via, R., Voiculescu, I., Odone, F., & Pastore, V. P. (2026). 
+          CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. 
+          In <i>Medical Image Computing and Computer Assisted Intervention (MICCAI)</i>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page presents the MICCAI 2026 accepted paper on CDPM-Align. For details, see the paper and the project code on GitHub.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
