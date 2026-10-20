@@ -1,28 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection — MICCAI 2026 accepted paper.">
-  <meta name="keywords" content="landmark detection, diffusion models, few-shot learning, anatomical landmarks, medical imaging, CDPM, uncertainty quantification">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>CDPM-Align — Multi-Scale Guidance-Aligned Diffusion Pretraining</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <title>CDPM-Align: Diffusion Pretraining for Few-Shot Anatomical Landmark Detection (MICCAI 2026)</title>
+  <meta name="description" content="CDPM-Align (MICCAI 2026): class-conditional diffusion pretraining with a multi-scale guidance-alignment loss for few-shot anatomical landmark detection. Pretrained on only 988 X-rays, it gives the best MRE in 5 of 6 10/25-shot settings and sub-millimetre ERE on ISBI2015 and DHA.">
+  <meta name="keywords" content="CDPM-Align, anatomical landmark detection, diffusion models, generative pretraining, few-shot learning, uncertainty quantification, expected radial error, medical imaging, X-ray, cephalometric, MICCAI 2026">
+  <meta name="author" content="Roberto Di Via, Irina Voiculescu, Francesca Odone, Vito Paolo Pastore">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://malga-vision.github.io/CDPM-Align_AcademicPage/">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CDPM-Align (MICCAI 2026)">
+  <meta property="og:title" content="CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection">
+  <meta property="og:description" content="CDPM-Align (MICCAI 2026): class-conditional diffusion pretraining with a multi-scale guidance-alignment loss for few-shot anatomical landmark detection. Pretrained on only 988 X-rays, it gives the best MRE in 5 of 6 10/25-shot settings and sub-millimetre ERE on ISBI2015 and DHA.">
+  <meta property="og:url" content="https://malga-vision.github.io/CDPM-Align_AcademicPage/">
+  <meta property="og:image" content="https://malga-vision.github.io/CDPM-Align_AcademicPage/static/images/social_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CDPM-Align pipeline: two-phase conditional diffusion pretraining with multi-scale guidance alignment, then few-shot landmark detection">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CDPM-Align: Diffusion Pretraining for Few-Shot Anatomical Landmark Detection (MICCAI 2026)">
+  <meta name="twitter:description" content="CDPM-Align (MICCAI 2026): class-conditional diffusion pretraining with a multi-scale guidance-alignment loss for few-shot anatomical landmark detection. Pretrained on only 988 X-rays, it gives the best MRE in 5 of 6 10/25-shot settings and sub-millimetre ERE on ISBI2015 and DHA.">
+  <meta name="twitter:image" content="https://malga-vision.github.io/CDPM-Align_AcademicPage/static/images/social_card.jpg">
+
+  <!-- Google Scholar -->
+  <meta name="citation_title" content="CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection">
+  <meta name="citation_author" content="Di Via, Roberto">
+  <meta name="citation_author" content="Voiculescu, Irina">
+  <meta name="citation_author" content="Odone, Francesca">
+  <meta name="citation_author" content="Pastore, Vito Paolo">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Medical Image Computing and Computer Assisted Intervention (MICCAI 2026)">
+  <meta name="citation_publisher" content="Springer Nature Switzerland">
+  <meta name="citation_pdf_url" content="https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#article",
+      "headline": "CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection",
+      "name": "CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection",
+      "alternativeHeadline": "CDPM-Align",
+      "abstract": "Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction. Despite its clinical relevance, the impact of representation learning in this context is still underexplored. In this work, we introduce CDPM-Align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on a few images and a few annotation regimes. Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training. Furthermore, we consider low-annotation scenarios for the downstream task of landmark detection, with 10 and 25 annotated images, reflecting realistic trade-offs between clinical effort and resource constraints for annotations. Our results confirm that generative pre-training enables the model to learn a robust representation. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.",
+      "description": "CDPM-Align (MICCAI 2026): class-conditional diffusion pretraining with a multi-scale guidance-alignment loss for few-shot anatomical landmark detection. Pretrained on only 988 X-rays, it gives the best MRE in 5 of 6 10/25-shot settings and sub-millimetre ERE on ISBI2015 and DHA.",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Roberto Di Via",
+          "sameAs": "https://scholar.google.com/citations?user=qGS6cv4AAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#unige"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Irina Voiculescu",
+          "sameAs": "https://scholar.google.com/citations?user=W6Jwb1UAAAAJ",
+          "affiliation": {
+            "@type": "Organization",
+            "name": "Department of Computer Science, University of Oxford"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Francesca Odone",
+          "sameAs": "https://scholar.google.com/citations?user=riK7DscAAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#unige"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Vito Paolo Pastore",
+          "sameAs": "https://scholar.google.com/citations?user=-boYCXcAAAAJ",
+          "affiliation": {
+            "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#unige"
+          }
+        }
+      ],
+      "datePublished": "2026",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": [
+        "anatomical landmark detection",
+        "diffusion models",
+        "generative pretraining",
+        "few-shot learning",
+        "uncertainty quantification",
+        "medical imaging",
+        "X-ray",
+        "MICCAI 2026"
+      ],
+      "image": "https://malga-vision.github.io/CDPM-Align_AcademicPage/static/images/social_card.jpg",
+      "url": "https://malga-vision.github.io/CDPM-Align_AcademicPage/",
+      "mainEntityOfPage": "https://malga-vision.github.io/CDPM-Align_AcademicPage/",
+      "sameAs": [
+        "https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf"
+      ],
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf",
+        "encodingFormat": "application/pdf"
+      },
+      "isPartOf": {
+        "@type": "Book",
+        "name": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2026",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Springer Nature Switzerland"
+        }
+      },
+      "publication": {
+        "@type": "PublicationEvent",
+        "name": "MICCAI 2026"
+      },
+      "workExample": {
+        "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#code"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#code",
+      "name": "CDPM-Align",
+      "codeRepository": "https://github.com/Malga-Vision/CDPM-Align",
+      "programmingLanguage": "Python",
+      "runtimePlatform": "PyTorch",
+      "license": "https://opensource.org/licenses/MIT",
+      "isPartOf": {
+        "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#article"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#unige",
+      "name": "MaLGa-DIBRIS, University of Genoa",
+      "url": "https://malga.unige.it/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CDPM-Align?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CDPM-Align is a pretraining method for anatomical landmark detection in X-ray images, published at MICCAI 2026. It trains a class-conditional diffusion model (CDPM) with classifier-free guidance on small heterogeneous X-ray datasets and adds a multi-scale alignment loss that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. The pretrained UNet is then fine-tuned end-to-end for landmark detection with a pixel-wise classification head."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What data is CDPM-Align pretrained and evaluated on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is pretrained on a pooled unlabeled corpus of only 988 X-ray images from three public benchmarks: Shenzhen (279 chest radiographs, 6 landmarks), ISBI2015 (400 lateral cephalograms, 19 landmarks) and the Digital Hand Atlas DHA (910 hand radiographs, 37 landmarks). Landmark detection is evaluated with 10 and 25 annotated images, reporting mean and standard deviation over 5 independent runs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How well does CDPM-Align perform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CDPM-Align achieves the best mean radial error (MRE) in 5 of 6 dataset-budget settings: +22% on ISBI2015 at 10 shots (2.11 vs. 2.70 mm) and +42% on DHA at 10 shots (2.51 vs. 4.34 mm). At 25 shots its expected radial error (ERE) is below 1 mm on ISBI2015 (0.95 mm) and DHA (0.97 mm). Pretrained on 988 images, it matches or surpasses a model pretrained on 112k NIH chest radiographs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why not use self-supervised pretraining instead?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On heterogeneous multi-district data, discriminative self-supervised objectives (DINO, MoCov3, SimCLRv2) degrade severely: on DHA at 10 shots they reach an MRE of 20-25 mm, against 2.51 mm for CDPM-Align. The denoising objective does not rely on global image discrimination, so generative pretraining is not affected."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the code available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The official PyTorch code, configurations and instructions for pretraining and few-shot landmark detection are at https://github.com/Malga-Vision/CDPM-Align. The follow-up work PACER (WACV 2027) finetunes a CDPM-Align detector on an unlabeled pool with curriculum self-training."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
 </head>
 <body>
 
@@ -64,7 +242,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="static/pdfs/" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Poster coming soon');return false;">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark" onclick="alert('Poster coming soon');return false;">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Poster (PDF)</span>
                   </a>
@@ -97,7 +275,7 @@
       <div class="hero-body">
         <div class="columns is-centered">
           <div class="column">
-            <img src="static/images/pipeline.png" alt="Teaser: CDPM-Align pipeline overview" style="width:100%">
+            <img src="static/images/pipeline_web.png" width="1600" height="1200" alt="CDPM-Align pipeline: phase 1 conditional diffusion training on three X-ray datasets, phase 2 multi-scale guidance alignment, then end-to-end few-shot landmark detection with a pixel-wise classification head" style="width:100%; height:auto;">
             <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.9rem; color:#666;">
               <b>Figure 1:</b> Overview of CDPM-Align. Left: Two-phase multi-dataset pretraining with standard conditional diffusion training followed by alignment phase enforcing directional consistency of the guidance signal. Right: End-to-end few-shot fine-tuning via pixel-wise classification.
             </p>
@@ -515,7 +693,7 @@
       <div class="columns is-centered" style="margin-top:2rem;">
         <div class="column">
           <h3 class="title is-4 has-text-centered">Uncertainty Visualization</h3>
-          <img src="static/images/ere_comparison.png" alt="ERE comparison across methods" style="width:100%">
+          <img src="static/images/ere_comparison_web.jpg" width="1600" height="861" loading="lazy" alt="Predicted heatmap overlays at 10 shots on Shenzhen, ISBI2015 and DHA for several pretraining methods; CDPM-Align gives the tightest unimodal heatmaps" style="width:100%; height:auto;">
           <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
             <b>Figure 2:</b> Predicted heatmap overlays at 10-shot across datasets (rows) and selected methods (columns). CDPM-align (rightmost) yields consistently lower uncertainty with tight, unimodal heatmaps.
           </p>
@@ -636,6 +814,41 @@
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Frequently asked questions</h2>
+          <h3 class="title is-5" style="margin-top:1.2rem;">What is CDPM-Align?</h3>
+          <p>CDPM-Align is a pretraining method for anatomical landmark detection in X-ray images, published at MICCAI 2026. It trains a class-conditional diffusion model (CDPM) with classifier-free guidance on small heterogeneous X-ray datasets and adds a multi-scale alignment loss that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. The pretrained UNet is then fine-tuned end-to-end for landmark detection with a pixel-wise classification head.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">What data is CDPM-Align pretrained and evaluated on?</h3>
+          <p>It is pretrained on a pooled unlabeled corpus of only 988 X-ray images from three public benchmarks: Shenzhen (279 chest radiographs, 6 landmarks), ISBI2015 (400 lateral cephalograms, 19 landmarks) and the Digital Hand Atlas DHA (910 hand radiographs, 37 landmarks). Landmark detection is evaluated with 10 and 25 annotated images, reporting mean and standard deviation over 5 independent runs.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">How well does CDPM-Align perform?</h3>
+          <p>CDPM-Align achieves the best mean radial error (MRE) in 5 of 6 dataset-budget settings: +22% on ISBI2015 at 10 shots (2.11 vs. 2.70 mm) and +42% on DHA at 10 shots (2.51 vs. 4.34 mm). At 25 shots its expected radial error (ERE) is below 1 mm on ISBI2015 (0.95 mm) and DHA (0.97 mm). Pretrained on 988 images, it matches or surpasses a model pretrained on 112k NIH chest radiographs.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">Why not use self-supervised pretraining instead?</h3>
+          <p>On heterogeneous multi-district data, discriminative self-supervised objectives (DINO, MoCov3, SimCLRv2) degrade severely: on DHA at 10 shots they reach an MRE of 20-25 mm, against 2.51 mm for CDPM-Align. The denoising objective does not rely on global image discrimination, so generative pretraining is not affected.</p>
+          <h3 class="title is-5" style="margin-top:1.2rem;">Is the code available?</h3>
+          <p>Yes. The official PyTorch code, configurations and instructions for pretraining and few-shot landmark detection are at <a href="https://github.com/Malga-Vision/CDPM-Align">github.com/Malga-Vision/CDPM-Align</a>. The follow-up work <a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">PACER (WACV 2027)</a> finetunes a CDPM-Align detector on an unlabeled pool with curriculum self-training.</p>
+    </div>
+  </section>
+
+  <!-- Related work -->
+  <section class="section hero is-light" id="related">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Related work from our lab</h2>
+      <ul>
+        <li>
+          <b>PACER</b>: Curriculum Self-Training with Spatial Uncertainty for Pseudo-Label Selection in Few-Shot Anatomical Landmark Detection. <i>WACV 2027</i>.
+          [<a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">Project page</a>]
+          [<a href="https://github.com/Malga-Vision/PACER-wacv27">Code</a>]
+        </li>
+        <li>
+          <b>FairerXRay</b>: Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy. <i>ICCV 2025 Workshop</i>.
+          [<a href="https://malga-vision.github.io/FairerXRay-LandmarkDetection-AcademicPage/">Project page</a>]
+        </li>
+      </ul>
     </div>
   </section>
 
