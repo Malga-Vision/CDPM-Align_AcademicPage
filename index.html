@@ -51,16 +51,16 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <sup>1</sup>MaLGa-DIBRIS, University of Genoa, Italy &nbsp;&nbsp;
-                <sup>2</sup>Oxford University Department of Computer Science, UK
+                <sup>2</sup>Department of Computer Science, University of Oxford, UK
               </span>
             </div>
 
             <div class="column has-text-centered" style="margin-top:1rem;">
               <div class="publication-links">
                 <span class="link-block">
-                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Paper link coming soon');return false;">
+                  <a href="https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper (arXiv)</span>
+                    <span>Paper (MICCAI)</span>
                   </a>
                 </span>
                 <span class="link-block">
@@ -118,13 +118,13 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction.
+              Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction. Despite its clinical relevance, the impact of representation learning in this context is still underexplored.
             </p>
             <p>
-              In this work, we introduce CDPM-align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on few-shot regimes (10 and 25 annotated images). Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training.
+              In this work, we introduce CDPM-Align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on a few images and a few annotation regimes. Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training. Furthermore, we consider low-annotation scenarios for the downstream task of landmark detection, with 10 and 25 annotated images, reflecting realistic trade-offs between clinical effort and resource constraints for annotations.
             </p>
             <p>
-              Our results confirm that generative pre-training enables the model to learn robust representations. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.
+              Our results confirm that generative pre-training enables the model to learn a robust representation. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.
             </p>
           </div>
         </div>
@@ -283,14 +283,25 @@
                   <td style="padding:8px; border:1px solid #ddd;">44.07</td>
                   <td style="padding:8px; border:1px solid #ddd;">12.25</td>
                 </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.89</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.49</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>53.40</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>6.41</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.65</td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>2.50</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">53.53</td>
+                  <td style="padding:8px; border:1px solid #ddd;">6.77</td>
+                </tr>
                 <tr style="background-color:#e8f4e8;">
                   <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>3.01</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.96</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>53.07</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>7.17</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.96</td>
+                  <td style="padding:8px; border:1px solid #ddd;">53.07</td>
+                  <td style="padding:8px; border:1px solid #ddd;">7.17</td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>2.58</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.58</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.58</td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>56.00</b></td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>6.51</b></td>
                 </tr>
@@ -369,11 +380,22 @@
                   <td style="padding:8px; border:1px solid #ddd;">66.98</td>
                   <td style="padding:8px; border:1px solid #ddd;">5.09</td>
                 </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">2.32</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.78</td>
+                  <td style="padding:8px; border:1px solid #ddd;"><b>68.12</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">5.20</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.70</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.19</td>
+                  <td style="padding:8px; border:1px solid #ddd;">75.49</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.04</td>
+                </tr>
                 <tr style="background-color:#e8f4e8;">
                   <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>2.11</b></td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>1.38</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>67.48</b></td>
+                  <td style="padding:8px; border:1px solid #ddd;">67.48</td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>4.75</b></td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>1.54</b></td>
                   <td style="padding:8px; border:1px solid #ddd;"><b>0.95</b></td>
@@ -457,6 +479,17 @@
                   <td style="padding:8px; border:1px solid #ddd; color:red;">10.24</td>
                   <td style="padding:8px; border:1px solid #ddd; color:red;">63.83</td>
                   <td style="padding:8px; border:1px solid #ddd; color:red;">46.98</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
+                  <td style="padding:8px; border:1px solid #ddd;">4.08</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.24</td>
+                  <td style="padding:8px; border:1px solid #ddd;">80.50</td>
+                  <td style="padding:8px; border:1px solid #ddd;">16.41</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.62</td>
+                  <td style="padding:8px; border:1px solid #ddd;">1.19</td>
+                  <td style="padding:8px; border:1px solid #ddd;">89.80</td>
+                  <td style="padding:8px; border:1px solid #ddd;">3.18</td>
                 </tr>
                 <tr style="background-color:#e8f4e8;">
                   <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
@@ -612,9 +645,11 @@
       <h2 class="title">Citation</h2>
       <h3 class="title is-5">BibTeX</h3>
       <pre><code>@inproceedings{divia2026cdpm,
-  title={CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection},
+  title={{CDPM-Align}: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection},
   author={Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
-  booktitle={Medical Image Computing and Computer Assisted Intervention (MICCAI)},
+  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
+  series={Lecture Notes in Computer Science},
+  publisher={Springer Nature Switzerland},
   year={2026}
 }</code></pre>
       
