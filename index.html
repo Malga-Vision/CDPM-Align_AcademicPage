@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>CDPM-Align: Diffusion Pretraining for Few-Shot Anatomical Landmark Detection (MICCAI 2026)</title>
@@ -260,728 +262,278 @@
 }
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="static/malga/img/malga-mark.svg">
+  <link rel="stylesheet" href="static/malga/malga.css">
+  <link rel="stylesheet" href="static/css/page.css">
+  <script src="static/malga/malga.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 36px;">
-              CDPM-Align:<br>
-              Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection
-            </h1>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ" target="_blank">Roberto Di Via</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?hl=it&user=W6Jwb1UAAAAJ" target="_blank">Irina Voiculescu</a><sup>2</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=riK7DscAAAAJ&hl=it" target="_blank">Francesca Odone</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=-boYCXcAAAAJ&hl=it" target="_blank">Vito Paolo Pastore</a><sup>1</sup>
-              </span>
-            </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <sup>1</sup>MaLGa-DIBRIS, University of Genoa, Italy &nbsp;&nbsp;
-                <sup>2</sup>Department of Computer Science, University of Oxford, UK
-              </span>
-            </div>
-
-            <div class="column has-text-centered" style="margin-top:1rem;">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper (MICCAI)</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="https://doi.org/10.1007/978-3-032-38072-2_9" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="ai ai-springer"></i></span>
-                    <span>Springer (LNCS)</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2606.04898" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="ai ai-arxiv"></i></span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="#talk" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-video"></i></span>
-                    <span>Talk</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Poster (PDF)</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="https://github.com/Malga-Vision/CDPM-Align" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="#talk" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-award"></i></span>
-                    <span>MICCAI 2026 — Oral</span>
-                  </a>
-                </span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-header__logo" href="https://malga.unige.it/" target="_blank" rel="noopener noreferrer">
+        <img src="static/malga/img/malga-logo.svg" width="231" height="71" alt="MaLGa, Machine Learning Genoa Center">
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#highlights">Contributions</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#ablation">Ablation</a>
+        <a href="#media">Media</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cite">Cite</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- Teaser -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <div class="columns is-centered">
-          <div class="column">
-            <img src="static/images/pipeline_web.png" width="1600" height="1200" alt="CDPM-Align pipeline: phase 1 conditional diffusion training on three X-ray datasets, phase 2 multi-scale guidance alignment, then end-to-end few-shot landmark detection with a pixel-wise classification head" style="width:100%; height:auto;">
-            <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.9rem; color:#666;">
-              <b>Figure 1:</b> Overview of CDPM-Align. Left: Two-phase multi-dataset pretraining with standard conditional diffusion training followed by alignment phase enforcing directional consistency of the guidance signal. Right: End-to-end few-shot fine-tuning via pixel-wise classification.
-            </p>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <p class="hero__venue"><em>MICCAI 2026</em> Oral presentation, Springer LNCS vol. 16881</p>
+        <h1>
+          <span class="hero__acronym">CDPM-Align</span>
+          <span class="hero__title">Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection</span>
+        </h1>
+        <p class="authors">
+          <a href="https://scholar.google.com/citations?user=qGS6cv4AAAAJ" target="_blank" rel="noopener noreferrer">Roberto Di Via</a><sup>1</sup>,
+          <a href="https://scholar.google.com/citations?hl=it&amp;user=W6Jwb1UAAAAJ" target="_blank" rel="noopener noreferrer">Irina Voiculescu</a><sup>2</sup>,
+          <a href="https://scholar.google.com/citations?user=riK7DscAAAAJ&amp;hl=it" target="_blank" rel="noopener noreferrer">Francesca Odone</a><sup>1</sup>,
+          <a href="https://scholar.google.com/citations?user=-boYCXcAAAAJ&amp;hl=it" target="_blank" rel="noopener noreferrer">Vito Paolo Pastore</a><sup>1</sup>
+        </p>
+        <p class="affiliations"><span><sup>1</sup>MaLGa-DIBRIS, University of Genoa, Italy</span> <span><sup>2</sup>Department of Computer Science, University of Oxford, UK</span></p>
+        <ul class="links">
+          <li><a class="button button--primary" href="https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-paper"/></svg>Paper (MICCAI)</a></li>
+          <li><a class="button" href="https://doi.org/10.1007/978-3-032-38072-2_9" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-book"/></svg>Springer (LNCS)</a></li>
+          <li><a class="button" href="https://arxiv.org/abs/2606.04898" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-preprint"/></svg>arXiv</a></li>
+          <li><a class="button" href="#talk"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-video"/></svg>Talk</a></li>
+          <li><a class="button" href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-poster"/></svg>Poster (PDF)</a></li>
+          <li><a class="button" href="https://github.com/Malga-Vision/CDPM-Align" target="_blank" rel="noopener noreferrer"><svg class="icon icon--fill" aria-hidden="true"><use href="static/malga/img/icons.svg#i-github"/></svg>Code</a></li>
+          <li><a class="button" href="#talk"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-award"/></svg>MICCAI 2026 — Oral</a></li>
+          <li><a class="button" href="#cite"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-cite"/></svg>BibTeX</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="teaser" aria-label="Teaser">
+      <div class="wrap">
+        <figure class="figure">
+          <div class="figure__frame">
+            <img src="static/images/pipeline_web.png" width="1600" height="1200" alt="CDPM-Align pipeline: phase 1 conditional diffusion training on three X-ray datasets, phase 2 multi-scale guidance alignment, then end-to-end few-shot landmark detection with a pixel-wise classification head">
           </div>
-        </div>
-        <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
-          We introduce <b>CDPM-align</b>, a conditional diffusion pretraining framework with multi-scale guidance alignment. Pretrained on only <b>988 images</b>, it achieves state-of-the-art few-shot landmark detection with <b>sub-millimetre ERE</b> and outperforms self-supervised methods in robustness.
-        </h2>
+          <figcaption><strong>Figure 1.</strong> Overview of CDPM-Align. Left: Two-phase multi-dataset pretraining with standard conditional diffusion training followed by alignment phase enforcing directional consistency of the guidance signal. Right: End-to-end few-shot fine-tuning via pixel-wise classification.</figcaption>
+        </figure>
+        <p class="tldr">We introduce <b>CDPM-align</b>, a conditional diffusion pretraining framework with multi-scale guidance alignment. Pretrained on only <b>988 images</b>, it achieves state-of-the-art few-shot landmark detection with <b>sub-millimetre ERE</b> and outperforms self-supervised methods in robustness.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Abstract -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction. Despite its clinical relevance, the impact of representation learning in this context is still underexplored.
-            </p>
-            <p>
-              In this work, we introduce CDPM-Align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on a few images and a few annotation regimes. Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training. Furthermore, we consider low-annotation scenarios for the downstream task of landmark detection, with 10 and 25 annotated images, reflecting realistic trade-offs between clinical effort and resource constraints for annotations.
-            </p>
-            <p>
-              Our results confirm that generative pre-training enables the model to learn a robust representation. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.
-            </p>
-          </div>
+    <section class="section" id="abstract">
+      <div class="wrap">
+        <h2 class="section__title">Abstract</h2>
+        <div class="prose abstract">
+          <p>Anatomical landmark detection is a fundamental task in medical image analysis supporting a wide range of diagnostic and interventional workflows. Although recent methods have achieved sub-millimetric localisation, accuracy alone is not sufficient for clinical deployment, requiring reliability and robustness in prediction. Despite its clinical relevance, the impact of representation learning in this context is still underexplored.</p>
+          <p>In this work, we introduce CDPM-Align, a multi-scale guidance-aligned conditional diffusion pre-training for anatomical landmark detection. Our experimental setup focuses on a few images and a few annotation regimes. Specifically, we employ three popular heterogeneous small-scale benchmark datasets for representation learning via conditional generative pre-training. Furthermore, we consider low-annotation scenarios for the downstream task of landmark detection, with 10 and 25 annotated images, reflecting realistic trade-offs between clinical effort and resource constraints for annotations.</p>
+          <p>Our results confirm that generative pre-training enables the model to learn a robust representation. This improves both accuracy and uncertainty on the downstream tasks, advancing towards safe and efficient clinical deployment.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Key Contributions -->
-  <section class="section hero is-small">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <h2 class="title is-3">Key Contributions</h2>
+    <section class="section section--alt" id="highlights">
+      <div class="wrap">
+        <h2 class="section__title">Key contributions</h2>
+        <ul class="highlights">
+          <li><h3>Conditional generative pretraining strategy</h3><p>We introduce a conditional generative pretraining strategy for small-scale heterogeneous X-ray datasets, augmented with a multi-scale guidance alignment loss that improves localisation accuracy, uncertainty concentration, and robustness in low-shot regimes.</p></li>
+          <li><h3>Comprehensive validation</h3><p>We validate the proposed method across three clinical dimensions (accuracy, predictive uncertainty, and robustness) on three public benchmarks under 10- and 25-shot protocols, showing consistent improvements over supervised, SSL, and state-of-the-art baselines.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap">
+        <h2 class="section__title">Method</h2>
+        <div class="prose">
+          <h3>Conditional diffusion probabilistic model (CDPM)</h3>
+          <p>We build on denoising diffusion probabilistic models (DDPMs) with class-conditional generation via classifier-free guidance. The forward process produces noisy samples, and a noise-prediction network is trained with class labels (dataset indices). The backbone is a UNet with FiLM embeddings for timestep and class conditioning.</p>
+
+          <h3>CDPM-Align: Multi-scale alignment on the guidance signal</h3>
+          <p>We introduce a multi-scale alignment objective that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. For each image, we sample two timesteps and perform forward passes with conditional and unconditional labels.</p>
+          <p>The guidance difference Δh = h_cond - h_uncond encodes dataset-specific anatomy. We extract features at four hierarchy levels: encoder 1/4, encoder 1/8, bottleneck, and decoder 1/8. The alignment loss averages the per-level cosine dissimilarity between the two views.</p>
+          <p>The alignment phase is applied only in the final 10% of training iterations, reducing computational overhead from 4× to 1.3×.</p>
+
+          <h3>Downstream landmark detection</h3>
+          <p>Following pretraining, the full pretrained UNet is fine-tuned end-to-end with a pixel-wise classification head. During fine-tuning and inference, the unconditional class label is used, decoupling the downstream task from pretraining labels and enabling future application to unseen datasets.</p>
         </div>
       </div>
+    </section>
 
-      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
-        <div class="column is-four-fifths">
-          <div class="content has-text-justified">
-            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #3273dc;">
-              <ol style="text-align:left; margin-left:1rem; line-height:1.8;">
-                <li><b>Conditional generative pretraining strategy</b>: We introduce a conditional generative pretraining strategy for small-scale heterogeneous X-ray datasets, augmented with a multi-scale guidance alignment loss that improves localisation accuracy, uncertainty concentration, and robustness in low-shot regimes.</li>
-                <li><b>Comprehensive validation</b>: We validate the proposed method across three clinical dimensions (accuracy, predictive uncertainty, and robustness) on three public benchmarks under 10- and 25-shot protocols, showing consistent improvements over supervised, SSL, and state-of-the-art baselines.</li>
-              </ol>
-            </div>
-          </div>
+    <section class="section section--alt" id="results">
+      <div class="wrap">
+        <h2 class="section__title">Experimental results</h2>
+        <div class="prose">
+          <p>We evaluate on three public benchmarks: <b>Shenzhen</b> (279 chest radiographs, 6 landmarks), <b>ISBI2015</b> (400 lateral cephalograms, 19 landmarks), and <b>Digital Hand Atlas (DHA)</b> (910 hand radiographs, 37 landmarks). The pooled unlabeled corpus comprises <b>988 images</b>. Results are reported as mean±std over 5 independent runs.</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Method -->
-  <section class="section hero is-small">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <h2 class="title is-3">Method</h2>
-        </div>
-      </div>
-
-      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
-        <div class="column is-four-fifths">
-          <div class="content has-text-justified">
-            <h3 class="title is-4">Conditional Diffusion Probabilistic Model (CDPM)</h3>
-            <p>
-              We build on denoising diffusion probabilistic models (DDPMs) with class-conditional generation via classifier-free guidance. The forward process produces noisy samples, and a noise-prediction network is trained with class labels (dataset indices). The backbone is a UNet with FiLM embeddings for timestep and class conditioning.
-            </p>
-
-            <h3 class="title is-4" style="margin-top:1.5rem;">CDPM-Align: Multi-scale Alignment on the Guidance Signal</h3>
-            <p>
-              We introduce a multi-scale alignment objective that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. For each image, we sample two timesteps and perform forward passes with conditional and unconditional labels.
-            </p>
-            <p>
-              The guidance difference Δh = h_cond - h_uncond encodes dataset-specific anatomy. We extract features at four hierarchy levels: encoder 1/4, encoder 1/8, bottleneck, and decoder 1/8. The alignment loss averages the per-level cosine dissimilarity between the two views.
-            </p>
-            <p>
-              The alignment phase is applied only in the final 10% of training iterations, reducing computational overhead from 4× to 1.3×.
-            </p>
-
-            <h3 class="title is-4" style="margin-top:1.5rem;">Downstream Landmark Detection</h3>
-            <p>
-              Following pretraining, the full pretrained UNet is fine-tuned end-to-end with a pixel-wise classification head. During fine-tuning and inference, the unconditional class label is used, decoupling the downstream task from pretraining labels and enabling future application to unseen datasets.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Results -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <h2 class="title is-3">Experimental Results</h2>
-        </div>
-      </div>
-
-      <!-- Dataset Info -->
-      <div class="columns is-centered has-text-centered" style="margin-top:1rem;">
-        <div class="column is-four-fifths">
-          <div class="content has-text-justified">
-            <p>
-              We evaluate on three public benchmarks: <b>Shenzhen</b> (279 chest radiographs, 6 landmarks), <b>ISBI2015</b> (400 lateral cephalograms, 19 landmarks), and <b>Digital Hand Atlas (DHA)</b> (910 hand radiographs, 37 landmarks). The pooled unlabeled corpus comprises <b>988 images</b>. Results are reported as mean±std over 5 independent runs.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Table 1: Shenzhen -->
-      <div class="columns is-centered" style="margin-top:2rem;">
-        <div class="column">
-          <h3 class="title is-4 has-text-centered">Table 1: Landmark Detection on Shenzhen</h3>
-          <div style="overflow-x:auto;">
-            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+        <div class="table-block">
+          <p class="table-caption"><strong>Table 1.</strong> Landmark detection on Shenzhen</p>
+          <div class="table-scroll">
+            <table class="data-table">
               <thead>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;"></th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                </tr>
+                <tr><th class="left" scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="4">10-shot</th><th scope="colgroup" colspan="4">25-shot</th></tr>
+                <tr><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">67.82</td>
-                  <td style="padding:8px; border:1px solid #ddd;">132.46</td>
-                  <td style="padding:8px; border:1px solid #ddd;">9.43</td>
-                  <td style="padding:8px; border:1px solid #ddd;">370.73</td>
-                  <td style="padding:8px; border:1px solid #ddd;">37.45</td>
-                  <td style="padding:8px; border:1px solid #ddd;">39.61</td>
-                  <td style="padding:8px; border:1px solid #ddd;">19.59</td>
-                  <td style="padding:8px; border:1px solid #ddd;">266.69</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.44</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
-                  <td style="padding:8px; border:1px solid #ddd;">52.00</td>
-                  <td style="padding:8px; border:1px solid #ddd;">7.92</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.10</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.71</td>
-                  <td style="padding:8px; border:1px solid #ddd;">52.93</td>
-                  <td style="padding:8px; border:1px solid #ddd;">8.12</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.18</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.07</td>
-                  <td style="padding:8px; border:1px solid #ddd;">43.87</td>
-                  <td style="padding:8px; border:1px solid #ddd;">10.23</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.09</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.16</td>
-                  <td style="padding:8px; border:1px solid #ddd;">45.67</td>
-                  <td style="padding:8px; border:1px solid #ddd;">6.91</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (DINO)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.92</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.13</td>
-                  <td style="padding:8px; border:1px solid #ddd;">43.87</td>
-                  <td style="padding:8px; border:1px solid #ddd;">15.15</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.21</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.23</td>
-                  <td style="padding:8px; border:1px solid #ddd;">44.07</td>
-                  <td style="padding:8px; border:1px solid #ddd;">12.25</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.89</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.49</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>53.40</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>6.41</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.65</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.50</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">53.53</td>
-                  <td style="padding:8px; border:1px solid #ddd;">6.77</td>
-                </tr>
-                <tr style="background-color:#e8f4e8;">
-                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.96</td>
-                  <td style="padding:8px; border:1px solid #ddd;">53.07</td>
-                  <td style="padding:8px; border:1px solid #ddd;">7.17</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.58</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.58</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>56.00</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>6.51</b></td>
-                </tr>
+                <tr><th scope="row">Zhu et al.</th><td>67.82</td><td>132.46</td><td>9.43</td><td>370.73</td><td>37.45</td><td>39.61</td><td>19.59</td><td>266.69</td></tr>
+                <tr><th scope="row">Di Via et al.</th><td>3.44</td><td>3.01</td><td>52.00</td><td>7.92</td><td>3.10</td><td>2.71</td><td>52.93</td><td>8.12</td></tr>
+                <tr><th scope="row">ResNet-101 (ImageNet)</th><td>5.18</td><td>4.07</td><td>43.87</td><td>10.23</td><td>3.09</td><td>3.16</td><td>45.67</td><td>6.91</td></tr>
+                <tr><th scope="row">ResNet-101 (DINO)</th><td>4.92</td><td>5.13</td><td>43.87</td><td>15.15</td><td>4.21</td><td>4.23</td><td>44.07</td><td>12.25</td></tr>
+                <tr><th scope="row">CDPM (NIH, λ=0)</th><td class="best">2.89</td><td class="best">2.49</td><td class="best">53.40</td><td class="best">6.41</td><td>2.65</td><td class="best">2.50</td><td>53.53</td><td>6.77</td></tr>
+                <tr class="ours"><th scope="row">CDPM-align (Ours)</th><td>3.01</td><td>2.96</td><td>53.07</td><td>7.17</td><td class="best">2.58</td><td>2.58</td><td class="best">56.00</td><td class="best">6.51</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
 
-      <!-- Table 2: ISBI2015 -->
-      <div class="columns is-centered" style="margin-top:2rem;">
-        <div class="column">
-          <h3 class="title is-4 has-text-centered">Table 2: Landmark Detection on ISBI2015</h3>
-          <div style="overflow-x:auto;">
-            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+        <div class="table-block">
+          <p class="table-caption"><strong>Table 2.</strong> Landmark detection on ISBI2015</p>
+          <div class="table-scroll">
+            <table class="data-table">
               <thead>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;"></th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                </tr>
+                <tr><th class="left" scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="4">10-shot</th><th scope="colgroup" colspan="4">25-shot</th></tr>
+                <tr><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">17.20</td>
-                  <td style="padding:8px; border:1px solid #ddd;">48.33</td>
-                  <td style="padding:8px; border:1px solid #ddd;">38.25</td>
-                  <td style="padding:8px; border:1px solid #ddd;">91.94</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.63</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.23</td>
-                  <td style="padding:8px; border:1px solid #ddd;">66.96</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.29</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.70</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.97</td>
-                  <td style="padding:8px; border:1px solid #ddd;">66.57</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.41</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.80</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.26</td>
-                  <td style="padding:8px; border:1px solid #ddd;">74.06</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.34</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.83</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.38</td>
-                  <td style="padding:8px; border:1px solid #ddd;">64.20</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.42</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.86</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.37</td>
-                  <td style="padding:8px; border:1px solid #ddd;">68.83</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.87</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (DINO)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.71</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.96</td>
-                  <td style="padding:8px; border:1px solid #ddd;">54.29</td>
-                  <td style="padding:8px; border:1px solid #ddd;">18.88</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.36</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.94</td>
-                  <td style="padding:8px; border:1px solid #ddd;">66.98</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.09</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.32</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.78</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>68.12</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.20</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.70</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.19</td>
-                  <td style="padding:8px; border:1px solid #ddd;">75.49</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.04</td>
-                </tr>
-                <tr style="background-color:#e8f4e8;">
-                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.11</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>1.38</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;">67.48</td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>4.75</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>1.54</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>0.95</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>77.52</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>3.90</b></td>
-                </tr>
+                <tr><th scope="row">Zhu et al.</th><td>17.20</td><td>48.33</td><td>38.25</td><td>91.94</td><td>2.63</td><td>3.23</td><td>66.96</td><td>5.29</td></tr>
+                <tr><th scope="row">Di Via et al.</th><td>2.70</td><td>1.97</td><td>66.57</td><td>5.41</td><td>1.80</td><td>1.26</td><td>74.06</td><td>4.34</td></tr>
+                <tr><th scope="row">ResNet-101 (ImageNet)</th><td>2.83</td><td>2.38</td><td>64.20</td><td>5.42</td><td>2.86</td><td>2.37</td><td>68.83</td><td>4.87</td></tr>
+                <tr><th scope="row">ResNet-101 (DINO)</th><td>4.71</td><td>3.96</td><td>54.29</td><td>18.88</td><td>2.36</td><td>1.94</td><td>66.98</td><td>5.09</td></tr>
+                <tr><th scope="row">CDPM (NIH, λ=0)</th><td>2.32</td><td>1.78</td><td class="best">68.12</td><td>5.20</td><td>1.70</td><td>1.19</td><td>75.49</td><td>4.04</td></tr>
+                <tr class="ours"><th scope="row">CDPM-align (Ours)</th><td class="best">2.11</td><td class="best">1.38</td><td>67.48</td><td class="best">4.75</td><td class="best">1.54</td><td class="best">0.95</td><td class="best">77.52</td><td class="best">3.90</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
-            <b>+22% improvement</b> on ISBI2015 10-shot (2.11 vs 2.70 mm). At 25-shot: <b>1.54 mm MRE</b> with <b>77.52% SDR</b>, approaching the 2mm clinical threshold.
-          </p>
+          <p class="table-note"><b>+22% improvement</b> on ISBI2015 10-shot (2.11 vs 2.70 mm). At 25-shot: <b>1.54 mm MRE</b> with <b>77.52% SDR</b>, approaching the 2mm clinical threshold.</p>
         </div>
-      </div>
 
-      <!-- Table 3: DHA -->
-      <div class="columns is-centered" style="margin-top:2rem;">
-        <div class="column">
-          <h3 class="title is-4 has-text-centered">Table 3: Landmark Detection on DHA</h3>
-          <div style="overflow-x:auto;">
-            <table style="width:100%; border-collapse: collapse; font-size: 0.75rem;">
+        <div class="table-block">
+          <p class="table-caption"><strong>Table 3.</strong> Landmark detection on DHA</p>
+          <div class="table-scroll">
+            <table class="data-table">
               <thead>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;">Method</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">10-shot</th>
-                  <th style="padding:8px; border:1px solid #ddd;" colspan="4">25-shot</th>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:8px; border:1px solid #ddd;"></th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:8px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:8px; border:1px solid #ddd;">P95↓</th>
-                </tr>
+                <tr><th class="left" scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="4">10-shot</th><th scope="colgroup" colspan="4">25-shot</th></tr>
+                <tr><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Zhu et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">33.85</td>
-                  <td style="padding:8px; border:1px solid #ddd;">90.66</td>
-                  <td style="padding:8px; border:1px solid #ddd;">44.48</td>
-                  <td style="padding:8px; border:1px solid #ddd;">161.83</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.87</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.95</td>
-                  <td style="padding:8px; border:1px solid #ddd;">83.13</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.04</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">Di Via et al.</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.34</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.01</td>
-                  <td style="padding:8px; border:1px solid #ddd;">79.94</td>
-                  <td style="padding:8px; border:1px solid #ddd;">19.11</td>
-                  <td style="padding:8px; border:1px solid #ddd;">2.22</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.48</td>
-                  <td style="padding:8px; border:1px solid #ddd;">88.28</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.67</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">ResNet-101 (ImageNet)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">6.07</td>
-                  <td style="padding:8px; border:1px solid #ddd;">5.76</td>
-                  <td style="padding:8px; border:1px solid #ddd;">78.44</td>
-                  <td style="padding:8px; border:1px solid #ddd;">26.39</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.95</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.39</td>
-                  <td style="padding:8px; border:1px solid #ddd;">84.07</td>
-                  <td style="padding:8px; border:1px solid #ddd;">7.65</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">ResNet-101 (DINO)</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">23.63</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">22.38</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">34.95</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">99.49</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">10.16</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">10.24</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">63.83</td>
-                  <td style="padding:8px; border:1px solid #ddd; color:red;">46.98</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px; border:1px solid #ddd;">CDPM (NIH, λ=0)</td>
-                  <td style="padding:8px; border:1px solid #ddd;">4.08</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.24</td>
-                  <td style="padding:8px; border:1px solid #ddd;">80.50</td>
-                  <td style="padding:8px; border:1px solid #ddd;">16.41</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.62</td>
-                  <td style="padding:8px; border:1px solid #ddd;">1.19</td>
-                  <td style="padding:8px; border:1px solid #ddd;">89.80</td>
-                  <td style="padding:8px; border:1px solid #ddd;">3.18</td>
-                </tr>
-                <tr style="background-color:#e8f4e8;">
-                  <td style="padding:8px; border:1px solid #ddd;"><b>CDPM-align (Ours)</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.51</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.16</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>86.47</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>4.46</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>1.53</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>0.97</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>91.13</b></td>
-                  <td style="padding:8px; border:1px solid #ddd;"><b>2.77</b></td>
-                </tr>
+                <tr><th scope="row">Zhu et al.</th><td>33.85</td><td>90.66</td><td>44.48</td><td>161.83</td><td>2.87</td><td>4.95</td><td>83.13</td><td>4.04</td></tr>
+                <tr><th scope="row">Di Via et al.</th><td>4.34</td><td>3.01</td><td>79.94</td><td>19.11</td><td>2.22</td><td>1.48</td><td>88.28</td><td>3.67</td></tr>
+                <tr><th scope="row">ResNet-101 (ImageNet)</th><td>6.07</td><td>5.76</td><td>78.44</td><td>26.39</td><td>3.95</td><td>4.39</td><td>84.07</td><td>7.65</td></tr>
+                <tr class="ssl-fail"><th scope="row">ResNet-101 (DINO)</th><td>23.63</td><td>22.38</td><td>34.95</td><td>99.49</td><td>10.16</td><td>10.24</td><td>63.83</td><td>46.98</td></tr>
+                <tr><th scope="row">CDPM (NIH, λ=0)</th><td>4.08</td><td>3.24</td><td>80.50</td><td>16.41</td><td>1.62</td><td>1.19</td><td>89.80</td><td>3.18</td></tr>
+                <tr class="ours"><th scope="row">CDPM-align (Ours)</th><td class="best">2.51</td><td class="best">2.16</td><td class="best">86.47</td><td class="best">4.46</td><td class="best">1.53</td><td class="best">0.97</td><td class="best">91.13</td><td class="best">2.77</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
-            <b>+42% improvement</b> on DHA 10-shot (2.51 vs 4.34 mm). SSL methods (red) exhibit severe performance degradation on heterogeneous data.
-          </p>
+          <p class="table-note"><b>+42% improvement</b> on DHA 10-shot (2.51 vs 4.34 mm). SSL methods (red) exhibit severe performance degradation on heterogeneous data.</p>
         </div>
-      </div>
 
-      <!-- ERE Comparison -->
-      <div class="columns is-centered" style="margin-top:2rem;">
-        <div class="column">
-          <h3 class="title is-4 has-text-centered">Uncertainty Visualization</h3>
-          <img src="static/images/ere_comparison_web.jpg" width="1600" height="861" loading="lazy" alt="Predicted heatmap overlays at 10 shots on Shenzhen, ISBI2015 and DHA for several pretraining methods; CDPM-Align gives the tightest unimodal heatmaps" style="width:100%; height:auto;">
-          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
-            <b>Figure 2:</b> Predicted heatmap overlays at 10-shot across datasets (rows) and selected methods (columns). CDPM-align (rightmost) yields consistently lower uncertainty with tight, unimodal heatmaps.
-          </p>
-        </div>
-      </div>
-
-      <!-- Key Findings -->
-      <div class="columns is-centered has-text-centered" style="margin-top:2rem;">
-        <div class="column is-four-fifths">
-          <div class="content has-text-justified">
-            <h3 class="title is-4">Key Findings</h3>
-            <ul style="text-align:left; margin-left:2rem;">
-              <li><b>State-of-the-art few-shot performance</b>: CDPM-align achieves best MRE in 5/6 dataset-budget settings</li>
-              <li><b>Sub-millimetre ERE</b>: At 25-shot, achieves ERE below 1mm on ISBI2015 (0.95mm, +25% improvement) and DHA (0.97mm, +34% improvement)</li>
-              <li><b>Robustness on heterogeneous data</b>: SSL methods exhibit severe performance degradation on DHA at 10-shot (MRE 20-25mm vs 2.51mm for CDPM-align)</li>
-              <li><b>Data-efficient</b>: Pretrained on only 988 images, it matches or surpasses models trained on 112k NIH radiographs</li>
-              <li><b>Key improvements</b>: +22% on ISBI2015 10-shot, +42% on DHA 10-shot</li>
-            </ul>
+        <h3>Uncertainty visualization</h3>
+        <figure class="figure">
+          <div class="figure__frame">
+            <img src="static/images/ere_comparison_web.jpg" width="1600" height="861" loading="lazy" alt="Predicted heatmap overlays at 10 shots on Shenzhen, ISBI2015 and DHA for several pretraining methods; CDPM-Align gives the tightest unimodal heatmaps">
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <figcaption><strong>Figure 2.</strong> Predicted heatmap overlays at 10-shot across datasets (rows) and selected methods (columns). CDPM-align (rightmost) yields consistently lower uncertainty with tight, unimodal heatmaps.</figcaption>
+        </figure>
 
-  <!-- Ablation Study -->
-  <section class="section hero is-small">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <h2 class="title is-3">Ablation Studies</h2>
-        </div>
+        <h3>Key findings</h3>
+        <ul class="highlights">
+          <li><h3>State-of-the-art few-shot performance</h3><p>CDPM-align achieves best MRE in 5/6 dataset-budget settings</p></li>
+          <li><h3>Sub-millimetre ERE</h3><p>At 25-shot, achieves ERE below 1mm on ISBI2015 (0.95mm, +25% improvement) and DHA (0.97mm, +34% improvement)</p></li>
+          <li><h3>Robustness on heterogeneous data</h3><p>SSL methods exhibit severe performance degradation on DHA at 10-shot (MRE 20-25mm vs 2.51mm for CDPM-align)</p></li>
+          <li><h3>Data-efficient</h3><p>Pretrained on only 988 images, it matches or surpasses models trained on 112k NIH radiographs</p></li>
+          <li><h3>Key improvements</h3><p>+22% on ISBI2015 10-shot, +42% on DHA 10-shot</p></li>
+        </ul>
       </div>
+    </section>
 
-      <div class="columns is-centered" style="margin-top:1rem;">
-        <div class="column">
-          <h3 class="title is-4 has-text-centered">Table 4: Ablation of Alignment Weight λ on Shenzhen</h3>
-          <div style="overflow-x:auto;">
-            <table style="width:80%; border-collapse: collapse; font-size: 0.8rem; margin: 0 auto;">
+    <section class="section" id="ablation">
+      <div class="wrap">
+        <h2 class="section__title">Ablation studies</h2>
+        <div class="table-block">
+          <p class="table-caption"><strong>Table 4.</strong> Ablation of alignment weight λ on Shenzhen</p>
+          <div class="table-scroll">
+            <table class="data-table">
               <thead>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:10px; border:1px solid #ddd;">λ</th>
-                  <th style="padding:10px; border:1px solid #ddd;" colspan="4">10-shot</th>
-                  <th style="padding:10px; border:1px solid #ddd;" colspan="4">25-shot</th>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                  <th style="padding:10px; border:1px solid #ddd;"></th>
-                  <th style="padding:10px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:10px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:10px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:10px; border:1px solid #ddd;">P95↓</th>
-                  <th style="padding:10px; border:1px solid #ddd;">MRE↓</th>
-                  <th style="padding:10px; border:1px solid #ddd;">ERE↓</th>
-                  <th style="padding:10px; border:1px solid #ddd;">SDR@2↑</th>
-                  <th style="padding:10px; border:1px solid #ddd;">P95↓</th>
-                </tr>
+                <tr><th class="left" scope="col" rowspan="2">λ</th><th scope="colgroup" colspan="4">10-shot</th><th scope="colgroup" colspan="4">25-shot</th></tr>
+                <tr><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th><th scope="col">MRE↓</th><th scope="col">ERE↓</th><th scope="col">SDR@2↑</th><th scope="col">P95↓</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="padding:10px; border:1px solid #ddd;">0</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.95</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.35</td>
-                  <td style="padding:10px; border:1px solid #ddd;">51.60</td>
-                  <td style="padding:10px; border:1px solid #ddd;">9.30</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.75</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.69</td>
-                  <td style="padding:10px; border:1px solid #ddd;">53.20</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.20</td>
-                </tr>
-                <tr>
-                  <td style="padding:10px; border:1px solid #ddd;">1</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.82</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.28</td>
-                  <td style="padding:10px; border:1px solid #ddd;">51.53</td>
-                  <td style="padding:10px; border:1px solid #ddd;">9.44</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.61</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.59</td>
-                  <td style="padding:10px; border:1px solid #ddd;">53.47</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.00</td>
-                </tr>
-                <tr>
-                  <td style="padding:10px; border:1px solid #ddd;">3</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.25</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.88</td>
-                  <td style="padding:10px; border:1px solid #ddd;">52.20</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.03</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.89</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.57</td>
-                  <td style="padding:10px; border:1px solid #ddd;">53.47</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.26</td>
-                </tr>
-                <tr style="background-color:#e8f4e8;">
-                  <td style="padding:10px; border:1px solid #ddd;"><b>5</b></td>
-                  <td style="padding:10px; border:1px solid #ddd;"><b>3.01</b></td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.96</td>
-                  <td style="padding:10px; border:1px solid #ddd;"><b>53.07</b></td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.17</td>
-                  <td style="padding:10px; border:1px solid #ddd;"><b>2.58</b></td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.58</td>
-                  <td style="padding:10px; border:1px solid #ddd;"><b>56.00</b></td>
-                  <td style="padding:10px; border:1px solid #ddd;"><b>6.51</b></td>
-                </tr>
-                <tr>
-                  <td style="padding:10px; border:1px solid #ddd;">10</td>
-                  <td style="padding:10px; border:1px solid #ddd;">3.42</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.78</td>
-                  <td style="padding:10px; border:1px solid #ddd;">52.67</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.23</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.74</td>
-                  <td style="padding:10px; border:1px solid #ddd;">2.37</td>
-                  <td style="padding:10px; border:1px solid #ddd;">53.93</td>
-                  <td style="padding:10px; border:1px solid #ddd;">7.23</td>
-                </tr>
+                <tr><th scope="row">0</th><td>3.95</td><td>3.35</td><td>51.60</td><td>9.30</td><td>2.75</td><td>2.69</td><td>53.20</td><td>7.20</td></tr>
+                <tr><th scope="row">1</th><td>3.82</td><td>3.28</td><td>51.53</td><td>9.44</td><td>2.61</td><td>2.59</td><td>53.47</td><td>7.00</td></tr>
+                <tr><th scope="row">3</th><td>3.25</td><td>2.88</td><td>52.20</td><td>7.03</td><td>2.89</td><td>2.57</td><td>53.47</td><td>7.26</td></tr>
+                <tr class="ours"><th scope="row">5</th><td class="best">3.01</td><td>2.96</td><td class="best">53.07</td><td>7.17</td><td class="best">2.58</td><td>2.58</td><td class="best">56.00</td><td class="best">6.51</td></tr>
+                <tr><th scope="row">10</th><td>3.42</td><td>2.78</td><td>52.67</td><td>7.23</td><td>2.74</td><td>2.37</td><td>53.93</td><td>7.23</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="has-text-centered" style="margin-top:0.5rem; font-size:0.85rem; color:#666;">
-            λ=5 provides the best balance between accuracy, uncertainty, and robustness. ERE is lowest at λ=10, but this doesn't translate to optimal spatial accuracy.
-          </p>
+          <p class="table-note">λ=5 provides the best balance between accuracy, uncertainty, and robustness. ERE is lowest at λ=10, but this doesn't translate to optimal spatial accuracy.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Talk and poster -->
-  <section class="section" id="talk">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">MICCAI 2026 oral and poster</h2>
-      <div class="columns is-centered">
-        <div class="column is-7">
-          <h3 class="title is-5 has-text-centered">Oral presentation (10 min)</h3>
-          <video controls playsinline preload="none" width="100%" poster="static/images/talk_thumbnail.jpg">
-            <source src="static/videos/CDPM-Align_MICCAI2026_talk.mp4" type="video/mp4">
-            Your browser does not play MP4 video: <a href="static/videos/CDPM-Align_MICCAI2026_talk.mp4">download the talk</a>.
-          </video>
-        </div>
-        <div class="column is-5" id="poster">
-          <h3 class="title is-5 has-text-centered">Poster</h3>
-          <a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank">
-            <img src="static/images/poster_preview.jpg" width="1000" height="1414" loading="lazy" style="width:100%; height:auto; border:1px solid #ddd;"
-                 alt="CDPM-Align MICCAI 2026 poster: qualitative heatmaps against SimCLR v2, MoCo v3, ImageNet and Di Via et al., the two-stage pipeline, and MRE, ERE and P95 bar charts on Shenzhen, ISBI2015 and the Digital Hand Atlas">
-          </a>
-          <p class="has-text-centered" style="font-size:0.9rem;"><a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank">Download the poster (PDF, A0)</a></p>
+    <section class="section section--alt" id="media">
+      <div class="wrap">
+        <h2 class="section__title">MICCAI 2026 oral and poster</h2>
+        <div class="media-grid">
+          <div class="media-card" id="talk">
+            <h3>Oral presentation (10 min)</h3>
+            <video controls playsinline preload="metadata" poster="static/images/talk_thumbnail.jpg" width="1280" height="720">
+              <source src="static/videos/CDPM-Align_MICCAI2026_talk.mp4" type="video/mp4">
+              Your browser does not play MP4 video: <a href="static/videos/CDPM-Align_MICCAI2026_talk.mp4">download the talk</a>.
+            </video>
+          </div>
+          <div class="media-card" id="poster">
+            <h3>Poster</h3>
+            <a class="preview" href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank" rel="noopener noreferrer"><img src="static/images/poster_preview.jpg" width="1000" height="1414" loading="lazy" alt="CDPM-Align MICCAI 2026 poster: qualitative heatmaps against SimCLR v2, MoCo v3, ImageNet and Di Via et al., the two-stage pipeline, and MRE, ERE and P95 bar charts on Shenzhen, ISBI2015 and the Digital Hand Atlas"></a>
+            <p><a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank" rel="noopener noreferrer">Download the poster (PDF, A0)</a></p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container is-max-desktop content">
-      <h2 class="title">Frequently asked questions</h2>
-          <h3 class="title is-5" style="margin-top:1.2rem;">What is CDPM-Align?</h3>
-          <p>CDPM-Align is a pretraining method for anatomical landmark detection in X-ray images, published at MICCAI 2026. It trains a class-conditional diffusion model (CDPM) with classifier-free guidance on small heterogeneous X-ray datasets and adds a multi-scale alignment loss that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. The pretrained UNet is then fine-tuned end-to-end for landmark detection with a pixel-wise classification head.</p>
-          <h3 class="title is-5" style="margin-top:1.2rem;">What data is CDPM-Align pretrained and evaluated on?</h3>
-          <p>It is pretrained on a pooled unlabeled corpus of only 988 X-ray images from three public benchmarks: Shenzhen (279 chest radiographs, 6 landmarks), ISBI2015 (400 lateral cephalograms, 19 landmarks) and the Digital Hand Atlas DHA (910 hand radiographs, 37 landmarks). Landmark detection is evaluated with 10 and 25 annotated images, reporting mean and standard deviation over 5 independent runs.</p>
-          <h3 class="title is-5" style="margin-top:1.2rem;">How well does CDPM-Align perform?</h3>
-          <p>CDPM-Align achieves the best mean radial error (MRE) in 5 of 6 dataset-budget settings: +22% on ISBI2015 at 10 shots (2.11 vs. 2.70 mm) and +42% on DHA at 10 shots (2.51 vs. 4.34 mm). At 25 shots its expected radial error (ERE) is below 1 mm on ISBI2015 (0.95 mm) and DHA (0.97 mm). Pretrained on 988 images, it matches or surpasses a model pretrained on 112k NIH chest radiographs.</p>
-          <h3 class="title is-5" style="margin-top:1.2rem;">Why not use self-supervised pretraining instead?</h3>
-          <p>On heterogeneous multi-district data, discriminative self-supervised objectives (DINO, MoCov3, SimCLRv2) degrade severely: on DHA at 10 shots they reach an MRE of 20-25 mm, against 2.51 mm for CDPM-Align. The denoising objective does not rely on global image discrimination, so generative pretraining is not affected.</p>
-          <h3 class="title is-5" style="margin-top:1.2rem;">Is the code available?</h3>
-          <p>Yes. The official PyTorch code, configurations and instructions for pretraining and few-shot landmark detection are at <a href="https://github.com/Malga-Vision/CDPM-Align">github.com/Malga-Vision/CDPM-Align</a>. The follow-up work <a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">PACER (WACV 2027)</a> finetunes a CDPM-Align detector on an unlabeled pool with curriculum self-training.</p>
-    </div>
-  </section>
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2 class="section__title">Frequently asked questions</h2>
+        <div class="faq">
+          <details>
+            <summary>What is CDPM-Align?</summary>
+            <div><p>CDPM-Align is a pretraining method for anatomical landmark detection in X-ray images, published at MICCAI 2026. It trains a class-conditional diffusion model (CDPM) with classifier-free guidance on small heterogeneous X-ray datasets and adds a multi-scale alignment loss that enforces directional consistency of the guidance signal across independently sampled diffusion timesteps and UNet hierarchy levels. The pretrained UNet is then fine-tuned end-to-end for landmark detection with a pixel-wise classification head.</p></div>
+          </details>
+          <details>
+            <summary>What data is CDPM-Align pretrained and evaluated on?</summary>
+            <div><p>It is pretrained on a pooled unlabeled corpus of only 988 X-ray images from three public benchmarks: Shenzhen (279 chest radiographs, 6 landmarks), ISBI2015 (400 lateral cephalograms, 19 landmarks) and the Digital Hand Atlas DHA (910 hand radiographs, 37 landmarks). Landmark detection is evaluated with 10 and 25 annotated images, reporting mean and standard deviation over 5 independent runs.</p></div>
+          </details>
+          <details>
+            <summary>How well does CDPM-Align perform?</summary>
+            <div><p>CDPM-Align achieves the best mean radial error (MRE) in 5 of 6 dataset-budget settings: +22% on ISBI2015 at 10 shots (2.11 vs. 2.70 mm) and +42% on DHA at 10 shots (2.51 vs. 4.34 mm). At 25 shots its expected radial error (ERE) is below 1 mm on ISBI2015 (0.95 mm) and DHA (0.97 mm). Pretrained on 988 images, it matches or surpasses a model pretrained on 112k NIH chest radiographs.</p></div>
+          </details>
+          <details>
+            <summary>Why not use self-supervised pretraining instead?</summary>
+            <div><p>On heterogeneous multi-district data, discriminative self-supervised objectives (DINO, MoCov3, SimCLRv2) degrade severely: on DHA at 10 shots they reach an MRE of 20-25 mm, against 2.51 mm for CDPM-Align. The denoising objective does not rely on global image discrimination, so generative pretraining is not affected.</p></div>
+          </details>
+          <details>
+            <summary>Is the code available?</summary>
+            <div><p>Yes. The official PyTorch code, configurations and instructions for pretraining and few-shot landmark detection are at <a href="https://github.com/Malga-Vision/CDPM-Align">github.com/Malga-Vision/CDPM-Align</a>. The follow-up work <a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">PACER (WACV 2027)</a> finetunes a CDPM-Align detector on an unlabeled pool with curriculum self-training.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
 
-  <!-- Related work -->
-  <section class="section hero is-light" id="related">
-    <div class="container is-max-desktop content">
-      <h2 class="title">Related work from our lab</h2>
-      <ul>
-        <li>
-          <b>PACER</b>: Curriculum Self-Training with Spatial Uncertainty for Pseudo-Label Selection in Few-Shot Anatomical Landmark Detection. <i>WACV 2027</i>.
-          [<a href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">Project page</a>]
-          [<a href="https://github.com/Malga-Vision/PACER-wacv27">Code</a>]
-        </li>
-        <li>
-          Automated Landmark Detection for Assessing Hip Conditions: A Cross-Modality Validation of MRI versus X-ray. <i>ISBI 2026</i>.
-          [<a href="https://malga-vision.github.io/Landmarks-Hip-Conditions-AcademicPage/">Project page</a>]
-        </li>
-        <li>
-          <b>Diffusing DeBias</b>: Synthetic Bias Amplification for Model Debiasing. <i>NeurIPS 2025</i>.
-          [<a href="https://malga-vision.github.io/DiffusingDeBias-AcademicPage/">Project page</a>]
-        </li>
-        <li>
-          <b>FairerXRay</b>: Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy. <i>ICCV 2025 Workshop</i>.
-          [<a href="https://malga-vision.github.io/FairerXRay-LandmarkDetection-AcademicPage/">Project page</a>]
-        </li>
-        <li>
-          Self-Supervised Pre-Training with Diffusion Model for Few-Shot Landmark Detection in X-Ray Images. <i>WACV 2025</i>. The unconditional diffusion pretraining that CDPM-Align extends.
-          [<a href="https://malga-vision.github.io/DiffusionXray-FewShot-LandmarkDetection-AcademicPage/">Project page</a>]
-        </li>
-        <li>
-          Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images? <i>ISBI 2024</i>.
-          [<a href="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/">Project page</a>]
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- BibTeX / Citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">Citation</h2>
-      <h3 class="title is-5">BibTeX</h3>
-      <pre><code>@inproceedings{divia2026cdpm,
+    <section class="section section--alt" id="cite">
+      <div class="wrap">
+        <h2 class="section__title">Citation</h2>
+        <div class="cite">
+          <button class="button cite__copy" type="button" data-copy="bibtex"><svg class="icon" aria-hidden="true"><use href="static/malga/img/icons.svg#i-copy"/></svg><span data-label>Copy</span></button>
+          <pre><code id="bibtex">@inproceedings{divia2026cdpm,
   title={{CDPM-Align}: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection},
   author={Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
   booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
@@ -992,32 +544,85 @@
   year={2026},
   doi={10.1007/978-3-032-38072-2_9}
 }</code></pre>
-      
-      <h3 class="title is-5" style="margin-top:2rem;">APA Citation</h3>
-      <div class="content" style="background-color:#f5f5f5; padding:1rem; border-radius:4px;">
-        <p>
-          Di Via, R., Voiculescu, I., Odone, F., & Pastore, V. P. (2026). 
-          CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. 
-          In <i>Medical Image Computing and Computer Assisted Intervention – MICCAI 2026</i> (LNCS, Vol. 16881, pp. 89–99). Springer Nature Switzerland.
-          <a href="https://doi.org/10.1007/978-3-032-38072-2_9">https://doi.org/10.1007/978-3-032-38072-2_9</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              This page presents CDPM-Align, published at MICCAI 2026 (Springer LNCS, oral presentation). For details, see the paper and the project code on GitHub.
-            </p>
-          </div>
         </div>
+      </div>
+    </section>
+
+<!-- RELATED:START -->
+    <section class="section" id="related">
+      <div class="wrap">
+        <h2 class="section__title">Related work from our lab</h2>
+        <ol class="related">
+          <li>
+            <span class="related__venue">WACV 2027</span>
+            <a class="related__title" href="https://malga-vision.github.io/PACER-wacv27-AcademicPage/">PACER: Curriculum Self-Training with Spatial Uncertainty for Pseudo-Label Selection in Few-Shot Anatomical Landmark Detection</a>
+            <p><a href="https://github.com/Malga-Vision/PACER-wacv27" target="_blank" rel="noopener noreferrer">Code</a></p>
+          </li>
+          <li aria-current="page">
+            <span class="related__venue">MICCAI 2026, oral</span>
+            <span class="related__title">CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection</span><span class="related__here">this page</span>
+          </li>
+          <li>
+            <span class="related__venue">ISBI 2026</span>
+            <a class="related__title" href="https://malga-vision.github.io/Landmarks-Hip-Conditions-AcademicPage/">Automated Landmark Detection for Assessing Hip Conditions: A Cross-Modality Validation of MRI Versus X-Ray</a>
+            <p><a href="https://github.com/Malga-Vision/Landmarks-Hip-Conditions" target="_blank" rel="noopener noreferrer">Code</a></p>
+          </li>
+          <li>
+            <span class="related__venue">NeurIPS 2025</span>
+            <a class="related__title" href="https://malga-vision.github.io/DiffusingDeBias-AcademicPage/">Diffusing DeBias: Synthetic Bias Amplification for Model Debiasing</a>
+            <p><a href="https://github.com/Malga-Vision/DiffusingDeBias" target="_blank" rel="noopener noreferrer">Code</a></p>
+          </li>
+          <li>
+            <span class="related__venue">ICCV 2025 Workshops</span>
+            <a class="related__title" href="https://malga-vision.github.io/FairerXRay-LandmarkDetection-AcademicPage/">Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy</a>
+          </li>
+          <li>
+            <span class="related__venue">WACV 2025</span>
+            <a class="related__title" href="https://malga-vision.github.io/DiffusionXray-FewShot-LandmarkDetection-AcademicPage/">Self-Supervised Pre-Training with Diffusion Model for Few-Shot Landmark Detection in X-Ray Images</a>
+            <p><a href="https://github.com/Malga-Vision/DiffusionXray-FewShot-LandmarkDetection" target="_blank" rel="noopener noreferrer">Code</a></p>
+          </li>
+          <li>
+            <span class="related__venue">ISBI 2024</span>
+            <a class="related__title" href="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/">Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+<!-- RELATED:END -->
+  </main>
+
+<!-- FOOTER:START -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__grid">
+        <div>
+          <a class="site-footer__logo" href="https://malga.unige.it/" target="_blank" rel="noopener noreferrer">
+            <img src="static/malga/img/malga-unige-white.svg" width="236" height="74" alt="MaLGa and University of Genoa">
+          </a>
+          <p>Machine Learning Genoa Center (MaLGa)<br>DIBRIS, University of Genoa, Italy</p>
+        </div>
+        <div>
+          <h2>This paper</h2>
+          <ul>
+            <li><a href="https://github.com/Malga-Vision/CDPM-Align" target="_blank" rel="noopener noreferrer">Code</a></li>
+            <li><a href="#cite">How to cite</a></li>
+            <li><a href="https://github.com/Malga-Vision/CDPM-Align_AcademicPage" target="_blank" rel="noopener noreferrer">Source of this page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>MaLGa</h2>
+          <ul>
+            <li><a href="https://malga.unige.it/" target="_blank" rel="noopener noreferrer">malga.unige.it</a></li>
+            <li><a href="https://github.com/Malga-Vision" target="_blank" rel="noopener noreferrer">Malga-Vision on GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <span>&copy; The authors. Figures and text are from the paper.</span>
+        <span>Built with the <a href="https://github.com/Malga-Vision/malga-academic-page-template" target="_blank" rel="noopener noreferrer">MaLGa academic page template</a>.</span>
       </div>
     </div>
   </footer>
-
+<!-- FOOTER:END -->
 </body>
 </html>

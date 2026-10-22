@@ -1,0 +1,30 @@
+# Domains a page may link to. The page guard rejects any other external link,
+# which stops injected spam links from being published. One domain per line;
+# subdomains are allowed automatically. Add a domain only when a real link needs it.
+
+# lab and university
+malga-vision.github.io
+github.com
+malga.unige.it
+unige.it
+ox.ac.uk
+
+# papers, preprints, identifiers
+arxiv.org
+doi.org
+openreview.net
+openaccess.thecvf.com
+ieeexplore.ieee.org
+link.springer.com
+papers.miccai.org
+proceedings.neurips.cc
+orcid.org
+scholar.google.com
+
+# data, models, licenses
+huggingface.co
+kaggle.com
+figshare.com
+zenodo.org
+opensource.org
+creativecommons.org

@@ -1,0 +1,55 @@
+{
+  "_comment": "Lab project pages shown in 'Related work from our lab', newest first. Used by tools/render_shared.py.",
+  "org": "Malga-Vision",
+  "projects": [
+    {
+      "key": "pacer",
+      "venue": "WACV 2027",
+      "title": "PACER: Curriculum Self-Training with Spatial Uncertainty for Pseudo-Label Selection in Few-Shot Anatomical Landmark Detection",
+      "page_repo": "PACER-wacv27-AcademicPage",
+      "code_repo": "PACER-wacv27"
+    },
+    {
+      "key": "cdpm-align",
+      "venue": "MICCAI 2026, oral",
+      "title": "CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection",
+      "page_repo": "CDPM-Align_AcademicPage",
+      "code_repo": "CDPM-Align"
+    },
+    {
+      "key": "hip",
+      "venue": "ISBI 2026",
+      "title": "Automated Landmark Detection for Assessing Hip Conditions: A Cross-Modality Validation of MRI Versus X-Ray",
+      "page_repo": "Landmarks-Hip-Conditions-AcademicPage",
+      "code_repo": "Landmarks-Hip-Conditions"
+    },
+    {
+      "key": "diffusing-debias",
+      "venue": "NeurIPS 2025",
+      "title": "Diffusing DeBias: Synthetic Bias Amplification for Model Debiasing",
+      "page_repo": "DiffusingDeBias-AcademicPage",
+      "code_repo": "DiffusingDeBias"
+    },
+    {
+      "key": "fairerxray",
+      "venue": "ICCV 2025 Workshops",
+      "title": "Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy",
+      "page_repo": "FairerXRay-LandmarkDetection-AcademicPage",
+      "code_repo": null
+    },
+    {
+      "key": "diffusionxray",
+      "venue": "WACV 2025",
+      "title": "Self-Supervised Pre-Training with Diffusion Model for Few-Shot Landmark Detection in X-Ray Images",
+      "page_repo": "DiffusionXray-FewShot-LandmarkDetection-AcademicPage",
+      "code_repo": "DiffusionXray-FewShot-LandmarkDetection"
+    },
+    {
+      "key": "indomain",
+      "venue": "ISBI 2024",
+      "title": "Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images?",
+      "page_repo": "InDomain-TransferLearning-LandmarkDetection-AcademicPage",
+      "code_repo": null
+    }
+  ]
+}

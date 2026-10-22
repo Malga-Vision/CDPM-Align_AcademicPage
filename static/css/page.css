@@ -1,0 +1,4 @@
+/* Page-specific additions to malga.css. */
+
+/* SSL baseline rows that collapse on heterogeneous data; the table note refers to them as "(red)". */
+.data-table tr.ssl-fail > * { color: #c62828; }

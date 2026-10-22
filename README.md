@@ -1,6 +1,6 @@
 # CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining
 
-This is the academic project page for the MICCAI 2026 paper (oral presentation):
+This is the academic project page for the MICCAI 2026 paper (oral presentation), live at https://malga-vision.github.io/CDPM-Align_AcademicPage/
 
 **CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection**
 
@@ -48,9 +48,11 @@ We propose CDPM-align, a conditional diffusion pretraining framework with multi-
 - **ISBI2015**: 400 lateral cephalograms, 19 landmarks  
 - **Digital Hand Atlas (DHA)**: 910 hand radiographs, 37 landmarks
 
-## Website
+## About this page
 
-This page is adapted from the [Nerfies](https://github.com/nerfies/nerfies.github.io) project page template and is hosted on GitHub Pages.
+Static page built with the [MaLGa academic page template](https://github.com/Malga-Vision/malga-academic-page-template): no build step, no third-party scripts. Preview it locally with `python -m http.server` and open http://localhost:8000.
+
+Before pushing, run `python tools/page_guard.py`. The Pages workflow runs the same checks on every push and publishes the page only when they pass.
 
 ## Citation
 
@@ -69,7 +71,3 @@ If you find this work useful, please cite:
   doi={10.1007/978-3-032-38072-2_9}
 }
 ```
-
-## License
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
