@@ -52,6 +52,24 @@ We propose CDPM-align, a conditional diffusion pretraining framework with multi-
 
 This page is adapted from the [Nerfies](https://github.com/nerfies/nerfies.github.io) project page template and is hosted on GitHub Pages.
 
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{divia2026cdpm,
+  title={{CDPM-Align}: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection},
+  author={Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
+  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
+  series={Lecture Notes in Computer Science},
+  volume={16881},
+  pages={89--99},
+  publisher={Springer Nature Switzerland},
+  year={2026},
+  doi={10.1007/978-3-032-38072-2_9}
+}
+```
+
 ## License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
