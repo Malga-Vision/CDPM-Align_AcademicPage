@@ -135,3 +135,13 @@ body {
 
 
 
+
+/* Let wide tables scroll inside their wrapper instead of widening the page on phones */
+.hero > .container {
+  min-width: 0;
+}
+@media screen and (max-width: 768px) {
+  .hero > .container {
+    max-width: 100%;
+  }
+}

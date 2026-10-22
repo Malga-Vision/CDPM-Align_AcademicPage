@@ -1,6 +1,6 @@
 # CDPM-Align (MICCAI 2026)
 
-> CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. Roberto Di Via, Irina Voiculescu, Francesca Odone, Vito Paolo Pastore (MaLGa-DIBRIS, University of Genoa; Department of Computer Science, University of Oxford). MICCAI 2026, Springer LNCS.
+> CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. Roberto Di Via, Irina Voiculescu, Francesca Odone, Vito Paolo Pastore (MaLGa-DIBRIS, University of Genoa; Department of Computer Science, University of Oxford). MICCAI 2026 (oral), Springer LNCS vol. 16881, pp. 89-99, DOI 10.1007/978-3-032-38072-2_9.
 
 CDPM-Align trains a class-conditional diffusion model with classifier-free guidance on small heterogeneous X-ray datasets and adds a multi-scale alignment loss that enforces directional consistency of the guidance signal across diffusion timesteps and UNet hierarchy levels (applied in the final 10% of pretraining). The pretrained UNet is fine-tuned end-to-end for landmark detection.
 
@@ -12,6 +12,10 @@ Key results (10- and 25-shot, Shenzhen chest / ISBI2015 cephalometric / DHA hand
 
 ## Links
 - [Paper (PDF)](https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf)
+- [Springer (DOI)](https://doi.org/10.1007/978-3-032-38072-2_9)
+- [arXiv](https://arxiv.org/abs/2606.04898)
+- [Oral presentation video](https://malga-vision.github.io/CDPM-Align_AcademicPage/static/videos/CDPM-Align_MICCAI2026_talk.mp4)
+- [Poster (PDF)](https://malga-vision.github.io/CDPM-Align_AcademicPage/static/pdfs/CDPM-Align_MICCAI2026_poster.pdf)
 - [Project page](https://malga-vision.github.io/CDPM-Align_AcademicPage/)
 - [Code](https://github.com/Malga-Vision/CDPM-Align)
 - [Follow-up: PACER (WACV 2027)](https://malga-vision.github.io/PACER-wacv27-AcademicPage/)
@@ -22,6 +26,9 @@ Key results (10- and 25-shot, Shenzhen chest / ISBI2015 cephalometric / DHA hand
   author    = {Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
   booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
   series    = {Lecture Notes in Computer Science},
+  volume    = {16881},
+  pages     = {89--99},
   publisher = {Springer Nature Switzerland},
-  year      = {2026}
+  year      = {2026},
+  doi       = {10.1007/978-3-032-38072-2_9}
 }

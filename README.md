@@ -1,18 +1,20 @@
 # CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining
 
-This is the academic project page for the MICCAI 2026 accepted paper:
+This is the academic project page for the MICCAI 2026 paper (oral presentation):
 
 **CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection**
 
 ## Paper Details
 
-- **Venue**: MICCAI 2026 (Accepted)
+- **Venue**: MICCAI 2026 (oral), Springer LNCS vol. 16881, pp. 89–99, [doi:10.1007/978-3-032-38072-2_9](https://doi.org/10.1007/978-3-032-38072-2_9)
 - **Authors**: Roberto Di Via, Irina Voiculescu, Francesca Odone, Vito Paolo Pastore
-- **Affiliations**: MaLGa-DIBRIS, University of Genoa | Oxford University
+- **Affiliations**: MaLGa-DIBRIS, University of Genoa | Department of Computer Science, University of Oxford
 
 ## Links
 
+- [Project page](https://malga-vision.github.io/CDPM-Align_AcademicPage/)
 - [Code (GitHub)](https://github.com/Malga-Vision/CDPM-Align)
+- [Paper (MICCAI)](https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf) · [Springer](https://doi.org/10.1007/978-3-032-38072-2_9) · [arXiv](https://arxiv.org/abs/2606.04898)
 
 ## Abstract
 
@@ -48,7 +50,7 @@ We propose CDPM-align, a conditional diffusion pretraining framework with multi-
 
 ## Website
 
-This page is built using the [Academic Project Page Template](https://github.com/anonymity99/academic-page-template) and is hosted on GitHub Pages.
+This page is adapted from the [Nerfies](https://github.com/nerfies/nerfies.github.io) project page template and is hosted on GitHub Pages.
 
 ## License
 

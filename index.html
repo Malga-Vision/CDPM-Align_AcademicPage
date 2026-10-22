@@ -34,8 +34,16 @@
   <meta name="citation_author" content="Voiculescu, Irina">
   <meta name="citation_author" content="Odone, Francesca">
   <meta name="citation_author" content="Pastore, Vito Paolo">
-  <meta name="citation_publication_date" content="2026">
-  <meta name="citation_conference_title" content="Medical Image Computing and Computer Assisted Intervention (MICCAI 2026)">
+  <meta name="citation_publication_date" content="2026/09/26">
+  <meta name="citation_conference_title" content="International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI 2026)">
+  <meta name="citation_inbook_title" content="Medical Image Computing and Computer Assisted Intervention – MICCAI 2026">
+  <meta name="citation_series_title" content="Lecture Notes in Computer Science">
+  <meta name="citation_volume" content="16881">
+  <meta name="citation_firstpage" content="89">
+  <meta name="citation_lastpage" content="99">
+  <meta name="citation_isbn" content="978-3-032-38072-2">
+  <meta name="citation_doi" content="10.1007/978-3-032-38072-2_9">
+  <meta name="citation_arxiv_id" content="2606.04898">
   <meta name="citation_publisher" content="Springer Nature Switzerland">
   <meta name="citation_pdf_url" content="https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf">
 
@@ -86,7 +94,7 @@
           }
         }
       ],
-      "datePublished": "2026",
+      "datePublished": "2026-09-26",
       "inLanguage": "en",
       "isAccessibleForFree": true,
       "keywords": [
@@ -103,6 +111,8 @@
       "url": "https://malga-vision.github.io/CDPM-Align_AcademicPage/",
       "mainEntityOfPage": "https://malga-vision.github.io/CDPM-Align_AcademicPage/",
       "sameAs": [
+        "https://doi.org/10.1007/978-3-032-38072-2_9",
+        "https://arxiv.org/abs/2606.04898",
         "https://papers.miccai.org/miccai-2026/paper/3797_paper.pdf"
       ],
       "encoding": {
@@ -112,7 +122,14 @@
       },
       "isPartOf": {
         "@type": "Book",
-        "name": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2026",
+        "name": "Medical Image Computing and Computer Assisted Intervention – MICCAI 2026",
+        "isbn": "978-3-032-38072-2",
+        "bookEdition": "LNCS 16881",
+        "isPartOf": {
+          "@type": "BookSeries",
+          "name": "Lecture Notes in Computer Science",
+          "issn": "0302-9743"
+        },
         "publisher": {
           "@type": "Organization",
           "name": "Springer Nature Switzerland"
@@ -120,11 +137,34 @@
       },
       "publication": {
         "@type": "PublicationEvent",
-        "name": "MICCAI 2026"
+        "name": "MICCAI 2026 (oral presentation)"
       },
       "workExample": {
         "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#code"
-      }
+      },
+      "identifier": [
+        {
+          "@type": "PropertyValue",
+          "propertyID": "DOI",
+          "value": "10.1007/978-3-032-38072-2_9"
+        },
+        {
+          "@type": "PropertyValue",
+          "propertyID": "arXiv",
+          "value": "2606.04898"
+        }
+      ],
+      "pagination": "89-99",
+      "pageStart": "89",
+      "pageEnd": "99",
+      "subjectOf": [
+        {
+          "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#talk"
+        },
+        {
+          "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#poster"
+        }
+      ]
     },
     {
       "@type": "SoftwareSourceCode",
@@ -135,6 +175,31 @@
       "runtimePlatform": "PyTorch",
       "license": "https://opensource.org/licenses/MIT",
       "isPartOf": {
+        "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#talk",
+      "name": "CDPM-Align: MICCAI 2026 oral presentation",
+      "description": "Ten-minute MICCAI 2026 oral presentation of CDPM-Align, multi-scale guidance-aligned diffusion pretraining for robust few-shot anatomical landmark detection, by Roberto Di Via.",
+      "thumbnailUrl": "https://malga-vision.github.io/CDPM-Align_AcademicPage/static/images/talk_thumbnail.jpg",
+      "contentUrl": "https://malga-vision.github.io/CDPM-Align_AcademicPage/static/videos/CDPM-Align_MICCAI2026_talk.mp4",
+      "uploadDate": "2026-10-22",
+      "duration": "PT10M2S",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#article"
+      }
+    },
+    {
+      "@type": "MediaObject",
+      "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#poster",
+      "name": "CDPM-Align: MICCAI 2026 poster",
+      "contentUrl": "https://malga-vision.github.io/CDPM-Align_AcademicPage/static/pdfs/CDPM-Align_MICCAI2026_poster.pdf",
+      "encodingFormat": "application/pdf",
+      "thumbnailUrl": "https://malga-vision.github.io/CDPM-Align_AcademicPage/static/images/poster_preview.jpg",
+      "about": {
         "@id": "https://malga-vision.github.io/CDPM-Align_AcademicPage/#article"
       }
     },
@@ -242,7 +307,25 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark" onclick="alert('Poster coming soon');return false;">
+                  <a href="https://doi.org/10.1007/978-3-032-38072-2_9" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-springer"></i></span>
+                    <span>Springer (LNCS)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2606.04898" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#talk" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-video"></i></span>
+                    <span>Talk</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Poster (PDF)</span>
                   </a>
@@ -255,9 +338,9 @@
                 </span>
 
                 <span class="link-block">
-                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark" onclick="alert('Accepted at: MICCAI 2026');return false;">
-                    <span class="icon"><i class="fas fa-calendar-check"></i></span>
-                    <span>MICCAI 2026 — Accepted</span>
+                  <a href="#talk" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-award"></i></span>
+                    <span>MICCAI 2026 — Oral</span>
                   </a>
                 </span>
               </div>
@@ -817,6 +900,30 @@
     </div>
   </section>
 
+  <!-- Talk and poster -->
+  <section class="section" id="talk">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">MICCAI 2026 oral and poster</h2>
+      <div class="columns is-centered">
+        <div class="column is-7">
+          <h3 class="title is-5 has-text-centered">Oral presentation (10 min)</h3>
+          <video controls playsinline preload="none" width="100%" poster="static/images/talk_thumbnail.jpg">
+            <source src="static/videos/CDPM-Align_MICCAI2026_talk.mp4" type="video/mp4">
+            Your browser does not play MP4 video: <a href="static/videos/CDPM-Align_MICCAI2026_talk.mp4">download the talk</a>.
+          </video>
+        </div>
+        <div class="column is-5" id="poster">
+          <h3 class="title is-5 has-text-centered">Poster</h3>
+          <a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank">
+            <img src="static/images/poster_preview.jpg" width="1000" height="1414" loading="lazy" style="width:100%; height:auto; border:1px solid #ddd;"
+                 alt="CDPM-Align MICCAI 2026 poster: qualitative heatmaps against SimCLR v2, MoCo v3, ImageNet and Di Via et al., the two-stage pipeline, and MRE, ERE and P95 bar charts on Shenzhen, ISBI2015 and the Digital Hand Atlas">
+          </a>
+          <p class="has-text-centered" style="font-size:0.9rem;"><a href="static/pdfs/CDPM-Align_MICCAI2026_poster.pdf" target="_blank">Download the poster (PDF, A0)</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container is-max-desktop content">
@@ -845,8 +952,24 @@
           [<a href="https://github.com/Malga-Vision/PACER-wacv27">Code</a>]
         </li>
         <li>
+          Automated Landmark Detection for Assessing Hip Conditions: A Cross-Modality Validation of MRI versus X-ray. <i>ISBI 2026</i>.
+          [<a href="https://malga-vision.github.io/Landmarks-Hip-Conditions-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          <b>Diffusing DeBias</b>: Synthetic Bias Amplification for Model Debiasing. <i>NeurIPS 2025</i>.
+          [<a href="https://malga-vision.github.io/DiffusingDeBias-AcademicPage/">Project page</a>]
+        </li>
+        <li>
           <b>FairerXRay</b>: Are X-ray Landmark Detection Models Fair? A Preliminary Assessment and Mitigation Strategy. <i>ICCV 2025 Workshop</i>.
           [<a href="https://malga-vision.github.io/FairerXRay-LandmarkDetection-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          Self-Supervised Pre-Training with Diffusion Model for Few-Shot Landmark Detection in X-Ray Images. <i>WACV 2025</i>. The unconditional diffusion pretraining that CDPM-Align extends.
+          [<a href="https://malga-vision.github.io/DiffusionXray-FewShot-LandmarkDetection-AcademicPage/">Project page</a>]
+        </li>
+        <li>
+          Is In-Domain Data Beneficial in Transfer Learning for Landmarks Detection in X-Ray Images? <i>ISBI 2024</i>.
+          [<a href="https://malga-vision.github.io/InDomain-TransferLearning-LandmarkDetection-AcademicPage/">Project page</a>]
         </li>
       </ul>
     </div>
@@ -862,8 +985,11 @@
   author={Di Via, Roberto and Voiculescu, Irina and Odone, Francesca and Pastore, Vito Paolo},
   booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
   series={Lecture Notes in Computer Science},
+  volume={16881},
+  pages={89--99},
   publisher={Springer Nature Switzerland},
-  year={2026}
+  year={2026},
+  doi={10.1007/978-3-032-38072-2_9}
 }</code></pre>
       
       <h3 class="title is-5" style="margin-top:2rem;">APA Citation</h3>
@@ -871,7 +997,8 @@
         <p>
           Di Via, R., Voiculescu, I., Odone, F., & Pastore, V. P. (2026). 
           CDPM-Align: Multi-Scale Guidance-Aligned Diffusion Pretraining for Robust Few-Shot Anatomical Landmark Detection. 
-          In <i>Medical Image Computing and Computer Assisted Intervention (MICCAI)</i>.
+          In <i>Medical Image Computing and Computer Assisted Intervention – MICCAI 2026</i> (LNCS, Vol. 16881, pp. 89–99). Springer Nature Switzerland.
+          <a href="https://doi.org/10.1007/978-3-032-38072-2_9">https://doi.org/10.1007/978-3-032-38072-2_9</a>
         </p>
       </div>
     </div>
@@ -883,7 +1010,7 @@
         <div class="column is-8">
           <div class="content">
             <p>
-              This page presents the MICCAI 2026 accepted paper on CDPM-Align. For details, see the paper and the project code on GitHub.
+              This page presents CDPM-Align, published at MICCAI 2026 (Springer LNCS, oral presentation). For details, see the paper and the project code on GitHub.
             </p>
           </div>
         </div>
